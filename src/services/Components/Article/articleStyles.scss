@@ -1,0 +1,44 @@
+$dark: #102226;
+
+
+.articleContainer{
+  width: 1260px;
+  box-sizing: border-box;
+  min-height: 120px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #BFBFBF;
+  cursor: pointer;
+
+  .articleName{
+    font-size:24px;
+    color: $dark;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .articleDescription{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+  }
+
+  .articleAuthor, .articleDate, .articleRating {
+    font-size:18px;
+    color: $dark;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .articleRating{
+   padding: 0 100px 0 0;
+  }
+
+  .articleDate{
+    padding:  0 0 0 50px;
+  }
+}

@@ -1,20 +1,19 @@
 import React, {FC} from 'react';
 import "./articleStyles.scss"
-interface IArticle  {
-    name:string,
-    date: string,
-    author: string,
-    rating: number
-}
+import {useHistory} from "react-router-dom";
 
-const Article:FC<IArticle> = (props) => {
+
+const Article:FC<any> = (props) => {
+    const history = useHistory();
     return (
-        <div className="articleContainer">
-            <h1 className="articleName">{props.name}</h1>
+        <div className="articleContainer" onClick={(e: React.MouseEvent<HTMLDivElement>):void=>{
+            history.replace("/"+props.elem.id)
+        }}>
+            <h1 className="articleName">{props.elem.title}</h1>
             <div className="articleDescription">
-                <p className="articleRating">{props.rating}</p>
-                <p className="articleAuthor">{props.author}</p>
-                <p className="articleDate">{props.date}</p>
+                <p className="articleRating">{props.elem.score}</p>
+                <p className="articleAuthor">{props.elem.by}</p>
+                <p className="articleDate">{props.elem.time}</p>
             </div>
 
         </div>

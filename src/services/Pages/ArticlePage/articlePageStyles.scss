@@ -1,0 +1,126 @@
+.articleContainer{
+  width: 1280px;
+  height: 85vh;
+  overflow: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding:40px 40px 0 0;
+  row-gap:60px;
+
+  .articleName{
+    font-size:24px;
+    color: #102226;
+    font-weight: bold ;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .articleDescription{
+    width:100%;
+    height:50px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 50px;
+
+        .articleCommentsAmount {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: center;
+          align-items: center;
+          column-gap: 10px;
+        }
+
+        .articleDate, .articleCommentsAmount > p{
+          font-size:18px;
+          color: rgb(154, 154, 154);
+          font-weight: bold ;
+          font-family: 'Inter', sans-serif;
+        }
+
+        .articleCommentsAmount > .articlesLogo {
+          width:18px;
+          height: 18px;
+          background: rgb(154, 154, 154);
+        }
+
+
+  }
+
+  .articleContent{
+    font-size:18px;
+    font-family: 'Inter', sans-serif;
+    color: #102226;
+  }
+
+  .articlePostContent{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 10px;
+
+    .articleAuthor, .articleLink {
+      font-size:18px;
+      font-family: 'Inter', sans-serif;
+      color: rgb(154, 154, 154);
+
+    }
+
+    .articleLink{
+      cursor:pointer;
+    }
+  }
+  .commentsContainer{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width:1260px;
+    row-gap: 20px;
+
+    .commentTop{
+      .commentsHeader{
+        font-size:24px;
+        font-weight: bold;
+        font-family: 'Inter', sans-serif;
+        color: rgb(16, 34, 38);
+      }
+    }
+
+    .commentPool{
+      width: 1260px;
+      height: fit-content;
+      display: flex;
+      row-gap: 20px;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .comment{
+        width:100%;
+        min-height: 75px;
+        height:fit-content;
+      }
+    }
+
+
+
+  }
+
+
+
+}
+
+.articleContainer::-webkit-scrollbar {
+  width: 6px;               /* ширина scrollbar */
+}
+.articleContainer::-webkit-scrollbar-track {
+  background: #BFBFBF;        /* цвет дорожки */
+}
+.articleContainer::-webkit-scrollbar-thumb {
+  background-color: #102226;    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+}

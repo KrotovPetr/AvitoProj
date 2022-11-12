@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
-import "./headerStyles.scss"
+import headerStyles from "./headerStyles.module.scss"
 import {useHistory} from "react-router-dom";
 const Header:FC = () => {
     const history = useHistory();
     return (
-        <div className="mainContainer">
-            <div className="sourceName" onClick={(e:React.MouseEvent<HTMLDivElement>):void=>{
+        <div className={headerStyles.mainContainer}>
+            <div className={headerStyles.sourceName} onClick={(e:React.MouseEvent<HTMLDivElement>):void=>{
                 history.replace("/")
             }}>HackerNews</div>
         </div>

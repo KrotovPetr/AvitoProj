@@ -1,0 +1,174 @@
+.mainContainer{
+  width: 99%;
+  height:85vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 20px 0 0 0;
+
+  .repLink{
+    cursor:pointer;
+    font-size: 18px;
+    color: #102226;
+    font-weight: bold ;
+    font-family: 'Inter', sans-serif;
+    margin: 0 0 0 40px;
+  }
+  .repLink span{
+    font-size: 24px;
+  }
+
+  .repLink:hover{
+    text-decoration: underline;
+  }
+
+  .article{
+    overflow: auto;
+    width:100%;
+    margin: 40px 0 0 0;
+    .articleContainer{
+      width: 1600px;
+      height: fit-content;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      //align-self: center;
+      align-items: flex-start;
+      padding:0 40px 0 40px;
+      row-gap:40px;
+
+      .articleName{
+        font-size:24px;
+        color: #102226;
+        font-weight: bold ;
+        font-family: 'Inter', sans-serif;
+      }
+      .articleDescription{
+        width:100%;
+        height:50px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        column-gap: 50px;
+
+        .articleCommentsAmount {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: center;
+          align-items: center;
+          column-gap: 10px;
+        }
+
+        .articleDate, .articleCommentsAmount > p{
+          font-size:14px;
+          color: rgb(154, 154, 154);
+          font-weight: bold ;
+          font-family: 'Inter', sans-serif;
+        }
+
+        .articleCommentsAmount > .articlesLogo {
+          width:18px;
+          height: 18px;
+          background: #9a9a9a;
+        }
+
+
+      }
+
+    }
+    .articleContent{
+      font-size:16px;
+      font-family: 'Inter', sans-serif;
+      color: #102226;
+    }
+    .articlePostContent{
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: flex-start;
+
+      .articleAuthor, .articleLink {
+        font-size:14px;
+        font-family: 'Inter', sans-serif;
+        color: rgb(154, 154, 154);
+      }
+
+      .articleLink{
+        cursor:pointer;
+      }
+    }
+
+    .commentsContainer{
+      display:flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 0 0 20px 0;
+
+      .commentsTop{
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 1600px;
+
+        .commentsHeader{
+          font-size:24px;
+          font-weight: bold;
+          font-family: 'Inter', sans-serif;
+          color: #102226;
+        }
+
+        .reloadButton{
+          align-self: flex-end;
+          display:flex;
+          flex-flow: row nowrap;
+          justify-content: center;
+          align-items: center;
+          width: 150px;
+          height:50px;
+          background: #102226;
+          color: #ffffff;
+          font-weight: bold;
+          font-family: 'Inter', sans-serif;
+          font-size:16px;
+          border-radius: 20px;
+          cursor: pointer;
+        }
+      }
+
+      .commentsPool{
+        width:1600px;
+        height: fit-content;
+        margin: 30px 0 0 0;
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        row-gap: 20px;
+
+
+      }
+    }
+
+
+  }
+}
+
+
+
+
+.article::-webkit-scrollbar {
+  width: 6px;               /* ширина scrollbar */
+}
+.article::-webkit-scrollbar-track {
+  background: #BFBFBF;        /* цвет дорожки */
+}
+.article::-webkit-scrollbar-thumb {
+  background-color: #102226;    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+}
+
+

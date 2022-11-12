@@ -1,6 +1,14 @@
 import React, {FC} from 'react';
-import "./articlePageStyles.scss";
+import articlePageStyles from "./articlePageStyles.module.scss";
+import {commentArr} from "../../../utils/Constants/comments";
+import {useHistory} from "react-router-dom";
+import Comment from "../../Components/Comment/Comment";
+import {useSelector} from "../../../utils/Types/store";
 const ArticlePage: FC = () => {
+    const history = useHistory();
+    const {commentsData} = useSelector((store)=>({
+        commentsData: store.component.commentsData,
+    }))
     const articleInfo = {
         url: "https://topwar.ru/204874-minoborony-ukrainy-posle-uhoda-armii-rf-iz-hersona-vsu-smogut-obstrelivat-puti-ee-snabzhenija-iz-kryma.html",
         name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices massa eget nisl pharetra mattis. Morbi ac massa ut lectus gravida.",
@@ -32,49 +40,48 @@ const ArticlePage: FC = () => {
             "Vestibulum nec dignissim orci. Suspendisse pharetra volutpat commodo. Praesent id facilisis velit, ut congue eros. Ut sodales arcu et ullamcorper aliquet. Sed sodales lacus lacus, vestibulum consectetur justo condimentum sit amet. Aliquam vestibulum orci vel porta lacinia. Curabitur pharetra condimentum nisl, vel semper elit laoreet eget. Etiam viverra lobortis felis. Proin semper dui eu purus dignissim scelerisque. Proin fermentum est non diam suscipit, eu molestie dolor cursus. Proin quis orci vitae dolor elementum consequat et sed nisi. Nulla fermentum urna justo, at interdum tellus convallis nec. Quisque eu odio at libero suscipit bibendum.\n" +
             "\n" +
             "Nullam vestibulum in quam placerat scelerisque. Donec viverra nisl felis, eget rutrum purus sodales at. Phasellus id suscipit leo. Donec nec sapien magna. Nam mollis pretium lectus, non tincidunt dui. Etiam id pharetra lorem, sit amet sagittis.",
-        comments: [
-            {root: "Hello!11", children: [
-                    {root: "Hello21!", children:[
-                            {root: "Hello31!", children:[]}
-                        ]}  ,
-                    {root: "Hello22!", children:[
-                            {root: "Hello31!", children:[]}
-                        ]}  ,
-                ]},
-            {root: "Hello!12" , children: []}
-
-        ]
+        comments: commentArr
     }
     return (
-        <div className="articleContainer">
-            <h1 className="articleName">{articleInfo.name}</h1>
-            <div className="articleDescription">
-                <p className="articleDate">{articleInfo.date}</p>
-                <div className="articleCommentsAmount">
-                    <p>{articleInfo.commentsAmount}</p>
-                    <div className="articlesLogo"></div>
-                </div>
+        <div className={articlePageStyles.mainContainer}>
+            <div className={articlePageStyles.navigationPanel}>
+                <p className={articlePageStyles.repLink} onClick={(e:React.MouseEvent<HTMLElement>):void=>{
+                    e.preventDefault();
+                    history.replace("/")
+                }}>
+                    <span> &#8592;</span> На главную
+                </p>
             </div>
-            <div className="articleContent">{articleInfo.content}</div>
-            <div className="articlePostContent">
-                <p className="articleAuthor">{articleInfo.author}</p>
-                <p className="articleLink"> Original: {articleInfo.url}</p>
-            </div>
+            <div className={articlePageStyles.article}>
+                <div className={articlePageStyles.articleContainer}>
+                    <h1 className={articlePageStyles.articleName}>{articleInfo.name}</h1>
+                    <div className={articlePageStyles.articleDescription}>
+                        <p className={articlePageStyles.articleDate}>{articleInfo.date}</p>
+                        <div className={articlePageStyles.articleCommentsAmount}>
+                            <p>{articleInfo.commentsAmount}</p>
+                            <div className={articlePageStyles.articlesLogo} ></div>
+                        </div>
+                    </div>
+                    <div className={articlePageStyles.articleContent}>{articleInfo.content}</div>
+                    <div className={articlePageStyles.articlePostContent}>
+                        <p className={articlePageStyles.articleAuthor}>{articleInfo.author}</p>
+                        <p className={articlePageStyles.articleLink}> Original: {articleInfo.url}</p>
+                    </div>
+                    <div className={articlePageStyles.commentsContainer}>
+                        <div className = {articlePageStyles.commentsTop}>
+                            <p className={articlePageStyles.commentsHeader}>Comments</p>
+                            <div className={articlePageStyles.reloadButton}>Обновить</div>
+                        </div>
+                        <div className={articlePageStyles.commentsPool}>
+                            {commentsData.map((elem:any)=>{
+                                    return <Comment key = {elem.id} data = {elem}/>
+                            })
+                            }
 
-
-            <div className="commentsContainer">
-                <div className = "commentTop">
-                    <p className="commentsHeader">Comments</p>
-                    <div className="reloadBut"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="commentPool">
-                    {
-                        articleInfo.comments.map((elem:any)=>{
-                            return <div className="comment">{elem.root}</div>;
-                        })
-                    }
-                </div>
             </div>
         </div>
     );

@@ -1,0 +1,81 @@
+$dark: #102226;
+
+
+.articleContainer{
+  width: 1440px;
+  min-height: 120px;
+  height: fit-content;
+  border-radius: 25px;
+  background: #ffffff;
+  box-shadow:  9px 9px 18px #c7c7c7,
+  -9px -9px 18px #f9f9f9;
+  cursor: pointer;
+  row-gap: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+
+  .articleName{
+    font-size:18px;
+    color: $dark;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    padding: 20px 0 0 20px;
+  }
+
+  .articlePrimaryDescription{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+
+    .ratingContainer{
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+      margin: 0 20px 0 0;
+
+      .star{
+        font-size: 18px;
+        content: '★';
+        color:gold;
+      }
+      .articleRating{
+        font-weight: bold;
+        padding: 0 5px 0 0;
+        font-size: 18px;
+        color: $dark;
+        font-family: 'Inter', sans-serif;
+      }
+    }
+  }
+
+  .articleSecondaryDescription{
+    margin: 0 0 0 20px;
+    font-size:14px;
+    font-family: 'Inter', sans-serif;
+    color: rgb(154, 154, 154);
+    .articleAuthor{
+
+    }
+
+    .articleDate{
+
+    }
+  }
+
+
+  //.articleAuthor, .articleDate, .articleRating {
+  //  font-size:18px;
+  //  color: $dark;
+  //  font-family: 'Inter', sans-serif;
+  //}
+  //
+  //.articleDate{
+  //  padding:  0 0 0 50px;
+  //}
+}

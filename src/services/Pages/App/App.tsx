@@ -1,11 +1,9 @@
 import React, {FC} from 'react';
 import Header from "../../Components/Header/Header";
-import Article from "../../Components/Article/Article";
-import "./appStyles.scss"
+import appStyles from "./appStyles.module.scss"
 import ArticlePage from "../ArticlePage/ArticlePage";
 import MainPage from "../MainPage/MainPage";
-import {Route, Router, Switch, useHistory} from "react-router-dom";
-import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import {Route, Switch} from "react-router-dom";
 const App: FC = () => {
 
     // const getArticles = (function(url: string):any{
@@ -21,21 +19,15 @@ const App: FC = () => {
     // })("https://hacker-news.firebaseio.com/v0/newstories")
 
     return (
-        <div className="app">
-                <Header/>
-                <Switch>
-                    <Route exact path="/:id" >
-                        <ArticlePage />
-                    </Route>
-                    <Route exact path="/">
-                        <MainPage />
-                    </Route>
-                    <Route>
-                        <NotFoundPage />
-                    </Route>
-                </Switch>
+        <div className={appStyles.app}>
+            <Header/>
+            <Switch>
+                <Route exact path="/" component={MainPage}/>
+                <Route exact path="/articles/:id" component={ArticlePage}/>
+            </Switch>
         </div>
     );
 }
 
 export default App;
+

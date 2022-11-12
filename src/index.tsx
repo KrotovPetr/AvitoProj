@@ -1,27 +1,31 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { compose } from 'redux';
+
 import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './services/Pages/App/App';
-import { initializeApp } from 'firebase/app';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from 'react-router-dom';
+import App from "./services/Pages/App/App";
+import {store} from "./utils/Types/store";
 
-const firebaseConfig = {
-    //...
-};
+// const firebaseConfig = {
+//     //...
+// };
+//
+// const app = initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
 
-const container = document.getElementById('root')!;
-const root = createRoot(container);
-
-root.render(
+ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter basename="/">
             <Provider store={store}>
                 <App />
             </Provider>
         </BrowserRouter>
-    </React.StrictMode>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
-

@@ -1,14 +1,27 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import articlePageStyles from "./articlePageStyles.module.scss";
 import {commentArr} from "../../../utils/Constants/comments";
 import {useHistory} from "react-router-dom";
 import Comment from "../../Components/Comment/Comment";
-import {useSelector} from "../../../utils/Types/store";
+import {useDispatch, useSelector} from "../../../utils/Types/store";
+import {setRootComments} from "../../../utils/Functions/setRootComments";
+import {addComments, saveRootComments} from "../../../service/actions/componentsActions";
 const ArticlePage: FC = () => {
+    const [comments, setComments] = useState<any>([]);
     const history = useHistory();
-    const {commentsData} = useSelector((store)=>({
+    const dispatch = useDispatch();
+    const {rootComments, commentsData} = useSelector((store)=>({
+        rootComments: store.component.rootComments,
         commentsData: store.component.commentsData,
     }))
+
+    useEffect(()=>{
+        if(commentsData.length===0){
+            let rootComments: any = setRootComments(articleInfo.comments);
+            dispatch(saveRootComments(rootComments));
+        }
+        setComments(commentsData);
+    },[rootComments, commentsData])
     const articleInfo = {
         url: "https://topwar.ru/204874-minoborony-ukrainy-posle-uhoda-armii-rf-iz-hersona-vsu-smogut-obstrelivat-puti-ee-snabzhenija-iz-kryma.html",
         name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices massa eget nisl pharetra mattis. Morbi ac massa ut lectus gravida.",
@@ -42,6 +55,9 @@ const ArticlePage: FC = () => {
             "Nullam vestibulum in quam placerat scelerisque. Donec viverra nisl felis, eget rutrum purus sodales at. Phasellus id suscipit leo. Donec nec sapien magna. Nam mollis pretium lectus, non tincidunt dui. Etiam id pharetra lorem, sit amet sagittis.",
         comments: commentArr
     }
+
+
+
     return (
         <div className={articlePageStyles.mainContainer}>
             <div className={articlePageStyles.navigationPanel}>
@@ -70,10 +86,14 @@ const ArticlePage: FC = () => {
                     <div className={articlePageStyles.commentsContainer}>
                         <div className = {articlePageStyles.commentsTop}>
                             <p className={articlePageStyles.commentsHeader}>Comments</p>
-                            <div className={articlePageStyles.reloadButton}>Обновить</div>
+                            <button className={articlePageStyles.reloadButton} onClick={(e: React.MouseEvent<HTMLButtonElement>)=>{
+                                e.preventDefault();
+                                let rootComments: any = setRootComments(articleInfo.comments);
+                                dispatch(addComments(rootComments));
+                            }}>Обновить</button>
                         </div>
                         <div className={articlePageStyles.commentsPool}>
-                            {commentsData.map((elem:any)=>{
+                            {comments.map((elem:any)=>{
                                     return <Comment key = {elem.id} data = {elem}/>
                             })
                             }

@@ -4,10 +4,7 @@ import {arr} from "../../../utils/Constants/articles";
 import Article from "../../Components/Article/Article";
 import {useSelector} from "../../../utils/Types/store";
 const MainPage: FC = () => {
-    const [articles, setArr] = useState<any>([]);
-    const {commentsData} = useSelector((store)=>({
-        commentsData: store.component.commentsData,
-    }))
+
     return (
         <div className={mainPageStyles.mainContainer}>
             <div className={mainPageStyles.reloadButton}>Обновить</div>

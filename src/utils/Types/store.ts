@@ -1,6 +1,6 @@
 import {
     Action,
-    ActionCreator,
+    ActionCreator, applyMiddleware,
     compose,
     createStore,
 } from 'redux';
@@ -11,17 +11,17 @@ import {
     useSelector as selectorHook,
     useDispatch as dispatchHook,
 } from 'react-redux';
-import {rootReducer} from "../../services/reducers/rootReducer";
-
-const wsUrl = 'wss://norma.nomoreparties.space/orders';
-
+import {rootReducer} from "../../service/reducers/rootReducer";
 
 
 export const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+export const enhancer = composeEnhancers(
+    applyMiddleware(thunk)
+);
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, enhancer);
 
 // получение состояний хранилища
 export type RootState = ReturnType<typeof store.getState>;
@@ -30,6 +30,7 @@ export type RootState = ReturnType<typeof store.getState>;
 //     | TComponentsActions
 //     | TRequestActions
 //     | TSocketActions;
+
 
 // типизация thunk
 export type AppThunk<TReturn = void> = ActionCreator<

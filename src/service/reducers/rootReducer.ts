@@ -1,12 +1,14 @@
 import {combineReducers} from "@reduxjs/toolkit";
-import {ADD_COMMENTS} from "../actions/componentsActions";
+import {ADD_COMMENTS, SET_ROOT_COMMENTS} from "../actions/componentsActions";
 
 export type TInitialState = {
     commentsData: any,
+    rootComments: any
 };
 
 const initialState: TInitialState = {
     commentsData: [],
+    rootComments: [],
 
 }
 
@@ -19,6 +21,14 @@ export const componentReducer = (
             return {
                 ...state,
                 commentsData: action.data
+            }
+        }
+
+        case SET_ROOT_COMMENTS:{
+            return {
+                ...state,
+                commentsData: action.data,
+                rootComments: action.data
             }
         }
 

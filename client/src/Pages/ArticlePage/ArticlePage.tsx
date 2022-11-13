@@ -8,7 +8,6 @@ import {articleInfo} from "../../utils/Constants/articleInfo";
 
 const ArticlePage: FC = () => {
     const [comments, setComments] = useState<any>([]);
-
     const history = useHistory();
     const dispatch = useDispatch();
     const {rootComments, commentsData} = useSelector((store)=>({
@@ -54,6 +53,7 @@ const ArticlePage: FC = () => {
                             <button className={articlePageStyles.reloadButton} onClick={(e: React.MouseEvent<HTMLButtonElement>)=>{
                                 e.preventDefault();
                                 dispatch(saveRootComments())
+
                             }}>Обновить</button>
                         </div>
                         <div className={articlePageStyles.commentsPool}>

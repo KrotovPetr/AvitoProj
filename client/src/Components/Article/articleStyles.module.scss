@@ -7,7 +7,7 @@ $dark: #102226;
   height: fit-content;
   border-radius: 25px;
   background: #ffffff;
-  box-shadow:  9px 9px 18px #c7c7c7,
+  box-shadow:  5px 5px 18px #c7c7c7,
   -9px -9px 18px #f9f9f9;
   cursor: pointer;
   row-gap: 20px;
@@ -55,27 +55,93 @@ $dark: #102226;
   }
 
   .articleSecondaryDescription{
-    margin: 0 0 0 20px;
+    margin: 0 0 20px 20px;
     font-size:14px;
     font-family: 'Inter', sans-serif;
     color: rgb(154, 154, 154);
-    .articleAuthor{
 
-    }
+  }
 
-    .articleDate{
+}
 
-    }
+@media (min-width: 1000px) and (max-width: 1500px){
+  .articleContainer{
+    width:980px;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1100px){
+
+  .articleContainer{
+    width: 800px;
   }
 
 
-  //.articleAuthor, .articleDate, .articleRating {
-  //  font-size:18px;
-  //  color: $dark;
-  //  font-family: 'Inter', sans-serif;
-  //}
-  //
-  //.articleDate{
-  //  padding:  0 0 0 50px;
-  //}
+}
+
+@media (min-width: 650px) and (max-width: 800px){
+
+  .articleContainer{
+    width: 600px;
+  }
+
+}
+
+@media (min-width: 500px) and (max-width: 650px){
+
+  .articleContainer {
+    width: 480px;
+  }
+
+  .articleContainer .articleName{
+    font-size:16px;
+  }
+
+  .star{
+    font-size: 12px;
+    content: '★';
+    color:gold;
+  }
+
+  .articleContainer .articleSecondaryDescription{
+    margin: 0 0 10px 20px;
+  }
+
+}
+
+@media (min-width: 350px) and (max-width: 500px){
+
+  .articleContainer {
+    width: 330px;
+    min-height: fit-content;
+  }
+
+  .articleContainer .articleName{
+    font-size:16px;
+    width: 260px;
+  }
+
+  .articleContainer .articleSecondaryDescription{
+    margin: 0 0 10px 20px;
+  }
+
+}
+
+
+@media (max-width: 350px){
+
+  .articleContainer {
+    width: 260px;
+    min-height: fit-content;
+  }
+
+  .articleContainer .articleName{
+    font-size:16px;
+    width: 260px;
+  }
+
+  .articleContainer .articleSecondaryDescription{
+    margin: 0 0 10px 20px;
+  }
+
 }

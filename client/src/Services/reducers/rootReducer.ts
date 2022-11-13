@@ -1,9 +1,16 @@
 import {combineReducers} from "@reduxjs/toolkit";
 import {
-    ADD_COMMENTS, SET_ARTICLE_FETCH_ACTIVE, SET_ARTICLE_FETCH_ERROR,
+    ADD_COMMENTS,
+    GET_SECONDARY_COMMENTS_ACTIVE,
+    GET_SECONDARY_COMMENTS_ERROR, GET_SECONDARY_COMMENTS_SUCCESS,
+    SET_ARTICLE_FETCH_ACTIVE,
+    SET_ARTICLE_FETCH_ERROR,
     SET_ARTICLE_FETCH_SUCCESS,
     SET_ARTICLES_ARRAY,
-    SET_ROOT_COMMENTS, SET_ROOT_COMMENTS_ACTIVE, SET_ROOT_COMMENTS_ERROR, SET_ROOT_COMMENTS_SUCCESS
+    SET_ROOT_COMMENTS,
+    SET_ROOT_COMMENTS_ACTIVE,
+    SET_ROOT_COMMENTS_ERROR,
+    SET_ROOT_COMMENTS_SUCCESS
 } from "../actions/componentsActions";
 
 export type TInitialState = {
@@ -17,6 +24,10 @@ export type TInitialState = {
     rootsCommentFetchActive: boolean,
     rootsCommentFetchSuccess: boolean,
     rootsCommentFetchError: boolean,
+    secondaryCommentFetchActive: boolean,
+    secondaryCommentFetchSuccess: boolean,
+    secondaryCommentFetchError: boolean,
+    updateDetector: boolean
 };
 
 const initialState: TInitialState = {
@@ -24,12 +35,16 @@ const initialState: TInitialState = {
     rootComments: [],
     articlesArray: [],
     apiURL: 'http://localhost:5000/api',
+    updateDetector: false,
     articleFetchActive: false,
     articleFetchSuccess: false,
     articleFetchError: false,
     rootsCommentFetchActive: false,
     rootsCommentFetchSuccess: false,
     rootsCommentFetchError: false,
+    secondaryCommentFetchActive: false,
+    secondaryCommentFetchSuccess: false,
+    secondaryCommentFetchError: false,
 }
 
 export const componentReducer = (
@@ -103,9 +118,40 @@ export const componentReducer = (
                 ...state,
                 rootComments: action.data,
                 commentsData: action.data,
+                updateDetector: !state.updateDetector,
                 rootsCommentFetchActive: false,
                 rootsCommentFetchSuccess: true,
                 rootsCommentFetchError: false,
+            }
+        }
+
+
+
+        case GET_SECONDARY_COMMENTS_ACTIVE:{
+            return {
+                ...state,
+                secondaryCommentFetchActive: true,
+                secondaryCommentFetchSuccess: false,
+                secondaryCommentFetchError: false,
+            }
+        }
+
+        case GET_SECONDARY_COMMENTS_ERROR:{
+            return {
+                ...state,
+                secondaryCommentFetchActive: false,
+                secondaryCommentFetchSuccess: false,
+                secondaryCommentFetchError: true,
+            }
+        }
+
+        case GET_SECONDARY_COMMENTS_SUCCESS:{
+            return {
+                ...state,
+                commentsData: action.data,
+                secondaryCommentFetchActive: false,
+                secondaryCommentFetchSuccess: true,
+                secondaryCommentFetchError: false,
             }
         }
 

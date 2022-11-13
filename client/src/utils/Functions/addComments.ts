@@ -1,6 +1,5 @@
-import {commentArr} from "../Constants/comments";
 let ansArr:any = [];
-export function addSecondaryComments(data: any){
+export function addSecondaryComments(data: any, commentArr: any){
     let ans:any = [];
     ansArr = [];
     ans = getComments(data,commentArr)

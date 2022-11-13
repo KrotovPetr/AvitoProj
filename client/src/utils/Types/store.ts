@@ -11,7 +11,7 @@ import {
     useSelector as selectorHook,
     useDispatch as dispatchHook,
 } from 'react-redux';
-import {rootReducer} from "../../service/reducers/rootReducer";
+import {rootReducer} from "../../Services/reducers/rootReducer";
 
 
 export const composeEnhancers =

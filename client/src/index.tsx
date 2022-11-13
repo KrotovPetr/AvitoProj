@@ -4,8 +4,8 @@ import { compose } from 'redux';
 
 import { Provider } from 'react-redux';
 import {BrowserRouter, HashRouter} from 'react-router-dom';
-import App from "./services/Pages/App/App";
 import {store} from "./utils/Types/store";
+import App from "./Pages/App/App";
 
 // const firebaseConfig = {
 //     //...

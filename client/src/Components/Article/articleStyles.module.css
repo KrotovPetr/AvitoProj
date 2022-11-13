@@ -1,0 +1,56 @@
+@charset "UTF-8";
+.articleContainer {
+  width: 1440px;
+  min-height: 120px;
+  height: fit-content;
+  border-radius: 25px;
+  background: #ffffff;
+  box-shadow: 9px 9px 18px #c7c7c7, -9px -9px 18px #f9f9f9;
+  cursor: pointer;
+  row-gap: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.articleContainer .articleName {
+  font-size: 18px;
+  color: #102226;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  padding: 20px 0 0 20px;
+}
+.articleContainer .articlePrimaryDescription {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.articleContainer .articlePrimaryDescription .ratingContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px 0 0;
+}
+.articleContainer .articlePrimaryDescription .ratingContainer .star {
+  font-size: 18px;
+  content: "★";
+  color: gold;
+}
+.articleContainer .articlePrimaryDescription .ratingContainer .articleRating {
+  font-weight: bold;
+  padding: 0 5px 0 0;
+  font-size: 18px;
+  color: #102226;
+  font-family: "Inter", sans-serif;
+}
+.articleContainer .articleSecondaryDescription {
+  margin: 0 0 0 20px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: rgb(154, 154, 154);
+}
+
+/*# sourceMappingURL=articleStyles.module.css.map */

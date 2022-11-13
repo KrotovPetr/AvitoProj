@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400&family=Roboto&display=swap");
+.mainContainer {
+  width: 100%;
+  height: 70px;
+  background: #102226;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.mainContainer .sourceName {
+  cursor: pointer;
+  font-size: 32px;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+/*# sourceMappingURL=headerStyles.module.css.map */

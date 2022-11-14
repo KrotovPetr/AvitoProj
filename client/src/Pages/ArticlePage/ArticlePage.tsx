@@ -1,20 +1,24 @@
 import React, {FC, useEffect, useState} from 'react';
-import articlePageStyles from "./articlePageStyles.module.scss";
-import {useHistory} from "react-router-dom";
+import articlePageStyles from "./articlePageStyles.module.scss"
+import {useHistory, useLocation} from "react-router-dom";
 import Comment from "../../Components/Comment/Comment";
+import {
+    getCurrentArticle,
+    getCurrentArticleFromServer,
+    saveRootComments
+} from "../../Services/actions/componentsActions";
 import {useDispatch, useSelector} from "../../utils/Types/store";
-import {saveRootComments} from "../../Services/actions/componentsActions";
-import {articleInfo} from "../../utils/Constants/articleInfo";
 
-const ArticlePage: FC = () => {
+const ArticlePage: FC<any> = (props) => {
+    const location = useLocation();
     const [comments, setComments] = useState<any>([]);
     const history = useHistory();
     const dispatch = useDispatch();
-    const {rootComments, commentsData} = useSelector((store)=>({
+    const {currentArticle, rootComments, commentsData} = useSelector((store)=>({
+        currentArticle: store.component.currentArticle,
         rootComments: store.component.rootComments,
         commentsData: store.component.commentsData,
     }))
-
     useEffect(()=>{
         if( commentsData && commentsData.length===0){
             dispatch(saveRootComments())
@@ -22,9 +26,15 @@ const ArticlePage: FC = () => {
         setComments(commentsData);
     },[rootComments,commentsData])
 
+    useEffect(()=>{
+        if(currentArticle===null){
+            let id:string = location.pathname.split("/")[2];
+            dispatch(getCurrentArticleFromServer(id))
+        }
+    },[currentArticle])
     return (
         <div className={articlePageStyles.mainContainer}>
-            <div className={articlePageStyles.contentContainer}>
+            {currentArticle && <div className={articlePageStyles.contentContainer}>
                 <div className={articlePageStyles.navigationPanel}>
                     <p className={articlePageStyles.repLink} onClick={(e:React.MouseEvent<HTMLElement>):void=>{
                         e.preventDefault();
@@ -35,18 +45,21 @@ const ArticlePage: FC = () => {
                 </div>
                 <div className={articlePageStyles.article}>
                     <div className={articlePageStyles.articleContainer}>
-                        <h1 className={articlePageStyles.articleName}>{articleInfo.name}</h1>
+                        <h1 className={articlePageStyles.articleName}>{currentArticle.title}</h1>
                         <div className={articlePageStyles.articleDescription}>
-                            <p className={articlePageStyles.articleDate}>{articleInfo.date}</p>
+                            <p className={articlePageStyles.articleDate}>{currentArticle.time}</p>
                             <div className={articlePageStyles.articleCommentsAmount}>
-                                <p>{articleInfo.commentsAmount}</p>
+                                <p>{currentArticle.descendants}</p>
                                 <div className={articlePageStyles.articlesLogo} ></div>
                             </div>
                         </div>
-                        <div className={articlePageStyles.articleContent}>{articleInfo.content}</div>
+                        {currentArticle.content ?
+                            <div className={articlePageStyles.articleContent}>{currentArticle.content}</div> :
+                            null
+                        }
                         <div className={articlePageStyles.articlePostContent}>
-                            <p className={articlePageStyles.articleAuthor}>{articleInfo.author}</p>
-                            <p className={articlePageStyles.articleLink}> Original: {articleInfo.url}</p>
+                            <p className={articlePageStyles.articleAuthor}>{currentArticle.by}</p>
+                            <p className={articlePageStyles.articleLink}> Original: {currentArticle.url}</p>
                         </div>
                         <div className={articlePageStyles.commentsContainer}>
                             <div className = {articlePageStyles.commentsTop}>
@@ -54,7 +67,6 @@ const ArticlePage: FC = () => {
                                 <button className={articlePageStyles.reloadButton} onClick={(e: React.MouseEvent<HTMLButtonElement>)=>{
                                     e.preventDefault();
                                     dispatch(saveRootComments())
-
                                 }}>Reload</button>
                             </div>
                             <div className={articlePageStyles.commentsPool}>
@@ -69,7 +81,7 @@ const ArticlePage: FC = () => {
                     </div>
 
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };

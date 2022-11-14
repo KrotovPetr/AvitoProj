@@ -1,12 +1,16 @@
 import React, {FC} from 'react';
 import articleStyles from "./articleStyles.module.scss"
 import {useHistory} from "react-router-dom";
+import {useDispatch} from "../../utils/Types/store";
+import {getCurrentArticle} from "../../Services/actions/componentsActions";
 
 
 const Article:FC<any> = (props) => {
     const history = useHistory();
+    const dispatch = useDispatch();
     return (
         <div className={articleStyles.articleContainer} onClick={(e: React.MouseEvent<HTMLDivElement>):void=>{
+            dispatch(getCurrentArticle(props.elem))
             history.replace("/articles/"+props.elem.id)
         }}>
             <div className={articleStyles.articlePrimaryDescription}>

@@ -7,6 +7,7 @@
     "@types/react-router": "5.1.18",
     "@types/react-router-dom": "5.3.3",
     "clsx": "1.1.1",
+    "eslint-config-react-app": "6",
     "node-fetch": "3.2.9",
     "prop-types": "15.7.2",
     "react": "17.0.1",
@@ -20,7 +21,8 @@
     "redux": "4.1.2",
     "redux-devtools-extension": "2.13.9",
     "redux-thunk": "2.4.1",
-    "uuid": "8.3.2",
+    "uuid": "9.0.0",
+    "uuidv4": "6.2.13",
     "web-vitals": "1.0.1"
   },
   "scripts": {
@@ -56,18 +58,18 @@
     "@types/uuid": "8.3.4",
     "@typescript-eslint/eslint-plugin": "4.15.0",
     "@typescript-eslint/parser": "4.15.0",
-    "cypress": "9.5.3",
     "dotenv": "16.0.3",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
     "eslint": "7.19.0",
+    "eslint-config-react": "^1.1.7",
     "eslint-plugin-cypress": "2.12.1",
     "fetch-mock": "9.11.0",
     "prettier": "2.2.1",
     "react-error-overlay": "6.0.9",
     "react-test-renderer": "18.2.0",
     "redux-mock-store": "1.5.4",
-    "sass": "^1.56.1",
+    "sass": "1.56.0",
     "typescript": "4.1.3"
   },
   "proxy": "http://localhost:5000"

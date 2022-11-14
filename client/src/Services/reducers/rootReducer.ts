@@ -1,12 +1,12 @@
 import {combineReducers} from "@reduxjs/toolkit";
 import {
-    ADD_COMMENTS,
+    ADD_COMMENTS, GET_CURRENT_ARTICLE_ACTIVE, GET_CURRENT_ARTICLE_ERROR, GET_CURRENT_ARTICLE_SUCCESS,
     GET_SECONDARY_COMMENTS_ACTIVE,
     GET_SECONDARY_COMMENTS_ERROR, GET_SECONDARY_COMMENTS_SUCCESS,
     SET_ARTICLE_FETCH_ACTIVE,
     SET_ARTICLE_FETCH_ERROR,
     SET_ARTICLE_FETCH_SUCCESS,
-    SET_ARTICLES_ARRAY,
+    SET_ARTICLES_ARRAY, SET_CURRENT_ARTICLE,
     SET_ROOT_COMMENTS,
     SET_ROOT_COMMENTS_ACTIVE,
     SET_ROOT_COMMENTS_ERROR,
@@ -27,7 +27,11 @@ export type TInitialState = {
     secondaryCommentFetchActive: boolean,
     secondaryCommentFetchSuccess: boolean,
     secondaryCommentFetchError: boolean,
-    updateDetector: boolean
+    updateDetector: boolean,
+    currentArticle: any
+    currentArticleFetchActive: boolean,
+    currentArticleFetchSuccess: boolean,
+    currentArticleFetchError: boolean,
 };
 
 const initialState: TInitialState = {
@@ -45,6 +49,10 @@ const initialState: TInitialState = {
     secondaryCommentFetchActive: false,
     secondaryCommentFetchSuccess: false,
     secondaryCommentFetchError: false,
+    currentArticle: null,
+    currentArticleFetchActive: false,
+    currentArticleFetchSuccess: false,
+    currentArticleFetchError:false,
 }
 
 export const componentReducer = (
@@ -155,6 +163,40 @@ export const componentReducer = (
             }
         }
 
+        case SET_CURRENT_ARTICLE:{
+            return {
+                ...state,
+                currentArticle: action.data
+            }
+        }
+
+
+        case GET_CURRENT_ARTICLE_ACTIVE:{
+            return {
+                ...state,
+                currentArticleFetchActive: true,
+                currentArticleFetchSuccess: false,
+                currentArticleFetchError:false,
+            }
+        }
+
+        case GET_CURRENT_ARTICLE_SUCCESS:{
+            return {
+                ...state,
+                currentArticleFetchActive: false,
+                currentArticleFetchSuccess: true,
+                currentArticleFetchError:false,
+            }
+        }
+
+        case GET_CURRENT_ARTICLE_ERROR:{
+            return {
+                ...state,
+                currentArticleFetchActive: false,
+                currentArticleFetchSuccess: false,
+                currentArticleFetchError:true,
+            }
+        }
         default: {
             return state;
         }

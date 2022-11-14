@@ -3,6 +3,7 @@ import commentStyles from "./commentStyles.module.scss"
 import {useDispatch, useSelector,} from "../../utils/Types/store";
 import {getSecondaryComments} from "../../Services/actions/componentsActions";
 const Comment:FC<any> = (props) => {
+    console.log(props)
     const [hasShown, setShows] = useState<any>(false);
     const dispatch = useDispatch();
     const {commentsData, updateDetector} = useSelector((store)=>({

@@ -1,159 +1,168 @@
 .mainContainer{
   width: 99%;
-  height:85vh;
+  height:fit-content;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   margin: 20px 0 0 0;
 
-  .repLink{
-    cursor:pointer;
-    font-size: 18px;
-    color: #102226;
-    font-weight: bold ;
-    font-family: 'Inter', sans-serif;
-    margin: 0 0 0 40px;
-  }
-  .repLink span{
-    font-size: 24px;
-  }
-
-  .repLink:hover{
-    text-decoration: underline;
-  }
-
-  .article{
-    overflow: auto;
+  .contentContainer{
     width:100%;
-    margin: 40px 0 0 0;
-    .articleContainer{
-      width: 1600px;
-      height: fit-content;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 85vh;
+    .repLink{
+      width:1600px;
+      cursor:pointer;
+      font-size: 18px;
+      color: #102226;
+      font-weight: bold ;
+      font-family: 'Inter', sans-serif;
+    }
+    .repLink span{
+      font-size: 24px;
+    }
+
+    .repLink:hover{
+      text-decoration: underline;
+    }
+
+    .article{
+      overflow: auto;
+      width:100%;
+      margin: 40px 0 0 0;
+      //background: #9a9a9a;
       display: flex;
-      flex-flow: column nowrap;
-      justify-content: flex-start;
-      //align-self: center;
+      justify-content: center;
       align-items: flex-start;
-      padding:0 40px 0 40px;
-      row-gap:40px;
-
-      .articleName{
-        font-size:24px;
-        color: #102226;
-        font-weight: bold ;
-        font-family: 'Inter', sans-serif;
-      }
-      .articleDescription{
-        width:100%;
-        height:50px;
+      .articleContainer{
+        width: 1600px;
+        height: fit-content;
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: column nowrap;
         justify-content: flex-start;
-        align-items: center;
-        column-gap: 50px;
+        //align-self: center;
+        align-items: flex-start;
+        padding:0 40px 0 40px;
+        row-gap:40px;
 
-        .articleCommentsAmount {
-          display: flex;
-          flex-flow: row nowrap;
-          justify-content: center;
-          align-items: center;
-          column-gap: 10px;
-        }
-
-        .articleDate, .articleCommentsAmount > p{
-          font-size:14px;
-          color: rgb(154, 154, 154);
+        .articleName{
+          font-size:24px;
+          color: #102226;
           font-weight: bold ;
           font-family: 'Inter', sans-serif;
         }
-
-        .articleCommentsAmount > .articlesLogo {
-          width:18px;
-          height: 18px;
-          background: #9a9a9a;
-        }
-
-
-      }
-
-    }
-    .articleContent{
-      font-size:16px;
-      font-family: 'Inter', sans-serif;
-      color: #102226;
-    }
-    .articlePostContent{
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
-      align-items: flex-start;
-
-      .articleAuthor, .articleLink {
-        font-size:14px;
-        font-family: 'Inter', sans-serif;
-        color: rgb(154, 154, 154);
-      }
-
-      .articleLink{
-        cursor:pointer;
-      }
-    }
-
-    .commentsContainer{
-      display:flex;
-      flex-flow: column nowrap;
-      justify-content: flex-start;
-      align-items: flex-start;
-      padding: 0 0 20px 0;
-
-      .commentsTop{
-        display:flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: center;
-        width: 1600px;
-
-        .commentsHeader{
-          font-size:24px;
-          font-weight: bold;
-          font-family: 'Inter', sans-serif;
-          color: #102226;
-        }
-
-        .reloadButton{
-          align-self: flex-end;
-          display:flex;
-          flex-flow: row nowrap;
-          justify-content: center;
-          align-items: center;
-          width: 150px;
+        .articleDescription{
+          width:100%;
           height:50px;
-          background: #102226;
-          color: #ffffff;
-          font-weight: bold;
-          font-family: 'Inter', sans-serif;
-          font-size:16px;
-          border-radius: 20px;
-          cursor: pointer;
-        }
-      }
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: flex-start;
+          align-items: center;
+          column-gap: 50px;
 
-      .commentsPool{
-        width:1600px;
-        height: fit-content;
-        margin: 30px 0 0 0;
-        display:flex;
+          .articleCommentsAmount {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            column-gap: 10px;
+          }
+
+          .articleDate, .articleCommentsAmount > p{
+            font-size:14px;
+            color: rgb(154, 154, 154);
+            font-weight: bold ;
+            font-family: 'Inter', sans-serif;
+          }
+
+          .articleCommentsAmount > .articlesLogo {
+            width:18px;
+            height: 18px;
+            background: #9a9a9a;
+          }
+
+
+        }
+
+      }
+      .articleContent{
+        font-size:16px;
+        font-family: 'Inter', sans-serif;
+        color: #102226;
+      }
+      .articlePostContent{
+        display: flex;
         flex-flow: column nowrap;
         justify-content: center;
-        align-items: center;
-        row-gap: 20px;
+        align-items: flex-start;
 
+        .articleAuthor, .articleLink {
+          font-size:14px;
+          font-family: 'Inter', sans-serif;
+          color: rgb(154, 154, 154);
+        }
 
+        .articleLink{
+          cursor:pointer;
+        }
+      }
+
+      .commentsContainer{
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0 0 20px 0;
+
+        .commentsTop{
+
+          display:flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          width: 1600px;
+
+          .commentsHeader{
+            font-size:24px;
+            font-weight: bold;
+            font-family: 'Inter', sans-serif;
+            color: #102226;
+          }
+
+          .reloadButton{
+            align-self: flex-end;
+            display:flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height:50px;
+            background: #102226;
+            color: #ffffff;
+            font-weight: bold;
+            font-family: 'Inter', sans-serif;
+            font-size:16px;
+            border-radius: 20px;
+            cursor: pointer;
+          }
+        }
+
+        .commentsPool{
+          width:1600px;
+          height: fit-content;
+          margin: 30px 0 0 0;
+          display:flex;
+          flex-flow: column nowrap;
+          justify-content: center;
+          align-items: center;
+          row-gap: 20px;
+        }
       }
     }
-
-
   }
 }
 
@@ -172,3 +181,219 @@
 }
 
 
+
+@media (min-width: 1600px) {
+  .mainContainer{
+    justify-content: center;
+    align-items: center;
+
+    .contentContainer{
+      height: 90vh;
+    }
+  }
+
+}
+
+@media (min-width: 1200px) and (max-width: 1600px){
+  .mainContainer{
+    .contentContainer{
+      height: 85vh;
+      .repLink{
+        width:1100px;
+      }
+      .article{
+        .articleContainer{
+          width: 1100px;
+        }
+        .commentsContainer{
+          .commentsTop{
+            width: 1100px;
+          }
+          .commentsPool{
+            width:1100px;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+@media (min-width: 1000px) and (max-width: 1200px){
+  .mainContainer{
+    .contentContainer{
+      height: 85vh;
+      .repLink{
+        width:900px;
+      }
+      .article{
+        .articleContainer{
+          width: 900px;
+        }
+        .commentsContainer{
+          .commentsTop{
+            width: 900px;
+          }
+          .commentsPool{
+            width:900px;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+
+@media (min-width: 800px) and (max-width: 1000px){
+  .mainContainer{
+    .contentContainer{
+      height: 85vh;
+      .repLink{
+        width:700px;
+      }
+      .article{
+        .articleContainer{
+          width: 700px;
+        }
+        .commentsContainer{
+          .commentsTop{
+            width: 700px;
+          }
+          .commentsPool{
+            width:700px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 600px) and (max-width: 800px){
+  .mainContainer{
+    .contentContainer{
+      height: 85vh;
+      .repLink{
+        width: 80vw;
+      }
+      .article{
+        .articleContainer{
+          width: 80vw;
+        }
+        .commentsContainer{
+          .commentsTop{
+            width: 80vw;
+          }
+          .commentsPool{
+            width: 80vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 500px) and (max-width: 600px){
+  .mainContainer{
+    .contentContainer{
+      height: 85vh;
+      .repLink{
+        width: 80vw;
+      }
+      .article{
+        .articleContainer{
+          width: 80vw;
+        }
+        .commentsContainer{
+          .commentsTop{
+            width: 80vw;
+          }
+          .commentsPool{
+            width: 80vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 350px) and (max-width: 500px){
+  .mainContainer{
+    .contentContainer{
+      height: 85vh;
+      .repLink{
+        width: 75vw;
+      }
+      .article{
+        .articleContainer{
+          width: 75vw;
+        }
+        .commentsContainer{
+          .commentsTop{
+            width: 75vw;
+          }
+          .commentsPool{
+            width: 75vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 200px) and (max-width: 350px){
+  .mainContainer{
+    .contentContainer{
+      height: 85vh;
+      .repLink{
+        width: 85vw;
+        font-size: 14px;
+      }
+      .repLink span{
+        font-size: 16px;
+      }
+      .article{
+        .articleContainer{
+          width: 65vw;
+          .articleName{
+            font-size:18px;
+          }
+        }
+        .commentsContainer{
+          .commentsTop{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 75vw;
+
+            .commentsHeader{
+              font-size:18px;
+              font-weight: bold;
+              font-family: 'Inter', sans-serif;
+              color: #102226;
+            }
+
+            .reloadButton{
+              width: 100px;
+              height:40px;
+              background: #102226;
+              color: #ffffff;
+              font-size:14px;
+              border-radius: 20px;
+              cursor: pointer;
+            }
+          }
+          .commentsPool{
+            width: 65vw;
+          }
+        }
+      }
+    }
+  }
+}

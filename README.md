@@ -3,21 +3,24 @@
 
 <h3>Технологии:</h3>
 <h5>Клиентская часть:</h5>
+<div id="technologyStack">
 <img src="https://img.shields.io/badge/TypeScript-blue?logo=TypeScript&logoColor=white&style=for-the-badge" alt="TypeScript Badge"/>
 <img src="https://img.shields.io/badge/JavaScript-yellow?logo=JavaScript&logoColor=white&style=for-the-badge" alt="JavaScript Badge"/>
 <img src="https://img.shields.io/badge/HTML5-orange?logo=HTML5&logoColor=white&style=for-the-badge" alt="HTML5 Badge"/>
 <img src="https://img.shields.io/badge/SCSS-grey?logo=SASS&logoColor=white&style=for-the-badge" alt="SCSS Badge"/>
 <img src="https://img.shields.io/badge/React-blue?logo=React&logoColor=white&style=for-the-badge" alt="React Badge"/>
 <img src="https://img.shields.io/badge/Redux-blueviolet?logo=Redux&logoColor=white&style=for-the-badge" alt="Redux Badge"/>
-
+</div>
 <h5>Серверная часть:</h5>
+<div id="technologyStack">
 <img src="https://img.shields.io/badge/JavaScript-yellow?logo=JavaScript&logoColor=white&style=for-the-badge" alt="JavaScript Badge"/>
 <img src="https://img.shields.io/badge/Express-white?logo=Express&logoColor=black&style=for-the-badge" alt="Express Badge"/>
 <img src="https://img.shields.io/badge/Node.JS-grey?logo=Node.JS&logoColor=white&style=for-the-badge" alt="Node Badge"/>
-
+</div>
 <h5>База данных:<h5>
+<div id="technologyStack">
 <img src="https://img.shields.io/badge/JSONServer-red?logo=JavaScript&logoColor=white&style=for-the-badge" alt="JavaScript Badge"/>
-
+</div>
 <h3>Общие сведения:</h3>
 <p>Проект построен по логике трёхзвенной архитектуры: клиентская часть, сервер приложений, база-данных(здесь json-server - имитация хранилища)</p>
 

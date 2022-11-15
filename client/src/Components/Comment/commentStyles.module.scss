@@ -1,4 +1,4 @@
-.commentContainer{
+.commentContainer {
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
@@ -7,26 +7,27 @@
   width: 1600px;
   min-height: 60px;
   background: #ffffff;
-  box-shadow:  9px 9px 18px #c7c7c7,
+  box-shadow: 9px 9px 18px #c7c7c7,
   -9px -9px 18px #f9f9f9;
   border-radius: 10px;
 
-  .commentHeader{
+  .commentHeader {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 
-    .commentAuthor{
+    .commentAuthor {
       margin: 10px 0 0 10px;
-      font-weight: bold ;
+      font-weight: bold;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
     }
-    .commentChildren{
+
+    .commentChildren {
       margin: 10px 10px 0 0;
-      font-weight: bold ;
+      font-weight: bold;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       cursor: pointer;
@@ -34,15 +35,15 @@
   }
 
 
-  .commentContent{
+  .commentContent {
     margin: 10px 0 0 10px;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: rgb(154, 154, 154);
-    width:98%;
+    width: 98%;
   }
 
-  .commentTime{
+  .commentTime {
     align-self: flex-end;
     justify-self: flex-end;
     margin: 20px 10px 10px 0;
@@ -54,60 +55,72 @@
 }
 
 
-@media (min-width: 1200px) and (max-width: 1600px){
-  .commentContainer{
+@media (min-width: 1600px) {
+  .commentContainer {
+    width: 80vw;
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .commentContainer {
     width: 1100px;
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1200px){
-  .commentContainer{
-    .commentContent{
-      margin:10px 0 0 10px;
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .commentContainer {
+    .commentContent {
+      margin: 10px 0 0 10px;
       width: 95%;
     }
+
     width: 900px;
   }
 }
 
-@media (min-width: 800px) and (max-width: 1000px){
-  .commentContainer{
-    .commentContent{
-      margin:10px 0 0 10px;
+@media (min-width: 800px) and (max-width: 1000px) {
+  .commentContainer {
+    .commentContent {
+      margin: 10px 0 0 10px;
       width: 95%;
     }
+
     width: 700px;
   }
 }
 
-@media (min-width: 600px) and (max-width: 800px){
-  .commentContainer{
-    .commentContent{
-      margin:10px 0 0 10px;
+@media (min-width: 600px) and (max-width: 800px) {
+  .commentContainer {
+    .commentContent {
+      margin: 10px 0 0 10px;
       width: 95%;
 
     }
+
     width: 85vw;
   }
 }
 
-@media (min-width: 500px) and (max-width: 600px){
-  .commentContainer{
-    .commentContent{
-      margin:10px 0 0 10px;
+@media (min-width: 500px) and (max-width: 600px) {
+  .commentContainer {
+    .commentContent {
+      margin: 10px 0 0 10px;
       width: 95%;
     }
+
     width: 85vw;
   }
 }
 
 
-@media (min-width: 200px) and (max-width: 500px){
-  .commentContainer{
-    .commentContent{
-      margin:10px 0 0 10px;
+@media (min-width: 200px) and (max-width: 500px) {
+  .commentContainer {
+    .commentContent {
+      margin: 10px 0 0 10px;
       width: 95%;
     }
+
     width: 85vw;
   }
 }

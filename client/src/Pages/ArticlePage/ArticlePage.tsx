@@ -3,7 +3,7 @@ import articlePageStyles from "./articlePageStyles.module.scss"
 import {useHistory, useLocation} from "react-router-dom";
 import Comment from "../../Components/Comment/Comment";
 import {
-    getCurrentArticle,
+    clearSecondaryComments,
     getCurrentArticleFromServer,
     saveRootComments
 } from "../../Services/actions/componentsActions";
@@ -14,30 +14,33 @@ const ArticlePage: FC<any> = (props) => {
     const [comments, setComments] = useState<any>([]);
     const history = useHistory();
     const dispatch = useDispatch();
-    const {currentArticle, rootComments, commentsData} = useSelector((store)=>({
+    const {currentArticle, rootComments, commentsData} = useSelector((store) => ({
         currentArticle: store.component.currentArticle,
         rootComments: store.component.rootComments,
         commentsData: store.component.commentsData,
     }))
-    useEffect(()=>{
-        if( commentsData && commentsData.length===0){
+    // console.log(currentArticle)
+    useEffect(() => {
+        if (commentsData && commentsData.length === 0) {
             dispatch(saveRootComments())
         }
         setComments(commentsData);
-    },[rootComments,commentsData])
+    }, [rootComments, commentsData])
 
-    useEffect(()=>{
-        if(currentArticle===null){
-            let id:string = location.pathname.split("/")[2];
+    useEffect(() => {
+        if (currentArticle === null) {
+            let id: string = location.pathname.split("/")[2];
+            
             dispatch(getCurrentArticleFromServer(id))
         }
-    },[currentArticle])
+    }, [currentArticle])
     return (
         <div className={articlePageStyles.mainContainer}>
             {currentArticle && <div className={articlePageStyles.contentContainer}>
                 <div className={articlePageStyles.navigationPanel}>
-                    <p className={articlePageStyles.repLink} onClick={(e:React.MouseEvent<HTMLElement>):void=>{
+                    <p className={articlePageStyles.repLink} onClick={(e: React.MouseEvent<HTMLElement>): void => {
                         e.preventDefault();
+                        dispatch(clearSecondaryComments());
                         history.replace("/")
                     }}>
                         <span> &#8592;</span> Back
@@ -50,29 +53,31 @@ const ArticlePage: FC<any> = (props) => {
                             <p className={articlePageStyles.articleDate}>{currentArticle.time}</p>
                             <div className={articlePageStyles.articleCommentsAmount}>
                                 <p>{currentArticle.descendants}</p>
-                                <div className={articlePageStyles.articlesLogo} ></div>
+                                <div className={articlePageStyles.articlesLogo}></div>
                             </div>
                         </div>
-                        {currentArticle.content ?
-                            <div className={articlePageStyles.articleContent}>{currentArticle.content}</div> :
-                            null
-                        }
+                        {/*{currentArticle.text ?*/}
+                        {/*    <div className={articlePageStyles.articleContent}>{currentArticle.text}</div> :*/}
+                        {/*    null*/}
+                        {/*}*/}
                         <div className={articlePageStyles.articlePostContent}>
                             <p className={articlePageStyles.articleAuthor}>{currentArticle.by}</p>
                             <p className={articlePageStyles.articleLink}> Original: {currentArticle.url}</p>
                         </div>
                         <div className={articlePageStyles.commentsContainer}>
-                            <div className = {articlePageStyles.commentsTop}>
+                            <div className={articlePageStyles.commentsTop}>
                                 <p className={articlePageStyles.commentsHeader}>Comments</p>
-                                <button className={articlePageStyles.reloadButton} onClick={(e: React.MouseEvent<HTMLButtonElement>)=>{
-                                    e.preventDefault();
-                                    dispatch(saveRootComments())
-                                }}>Reload</button>
+                                <button className={articlePageStyles.reloadButton}
+                                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                            e.preventDefault();
+                                            dispatch(saveRootComments())
+                                        }}>Reload
+                                </button>
                             </div>
                             <div className={articlePageStyles.commentsPool}>
                                 {
-                                    comments.length > 0 && comments.map((elem:any)=>{
-                                        return <Comment key = {elem.id} data = {elem}/>
+                                    comments.length > 0 && comments.map((elem: any) => {
+                                        return <Comment key={elem.id} data={elem}/>
                                     })
                                 }
 

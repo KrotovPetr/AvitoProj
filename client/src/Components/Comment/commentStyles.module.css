@@ -46,6 +46,12 @@
   color: #102226;
 }
 
+@media (min-width: 1600px) {
+  .commentContainer {
+    width: 80vw;
+    max-width: 1600px;
+  }
+}
 @media (min-width: 1200px) and (max-width: 1600px) {
   .commentContainer {
     width: 1100px;

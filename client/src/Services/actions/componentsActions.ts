@@ -17,16 +17,17 @@ export const SET_CURRENT_ARTICLE: 'SET_CURRENT_ARTICLE' = 'SET_CURRENT_ARTICLE';
 export const GET_CURRENT_ARTICLE_SUCCESS: 'GET_CURRENT_ARTICLE_SUCCESS' = 'GET_CURRENT_ARTICLE_SUCCESS';
 export const GET_CURRENT_ARTICLE_ERROR: 'GET_CURRENT_ARTICLE_ERROR' = 'GET_CURRENT_ARTICLE_ERROR';
 export const GET_CURRENT_ARTICLE_ACTIVE: 'GET_CURRENT_ARTICLE_ACTIVE' = 'GET_CURRENT_ARTICLE_ACTIVE';
+export const CLEAR_SECONDARY_COMMENTS: 'CLEAR_SECONDARY_COMMENTS' = 'CLEAR_SECONDARY_COMMENTS';
 
 
-export function addComments(arr: any){
-    return function (dispatch: AppDispatch){
-        dispatch({type: ADD_COMMENTS, data: arr});
+export function clearSecondaryComments() {
+    return function (dispatch: AppDispatch) {
+        dispatch({type: CLEAR_SECONDARY_COMMENTS});
     }
 }
 
-export function saveRootComments(){
-    return function (dispatch: AppDispatch){
+export function saveRootComments() {
+    return function (dispatch: AppDispatch) {
         fetch("/api/comments/roots", {
             method: 'GET',
             headers: {
@@ -38,13 +39,14 @@ export function saveRootComments(){
                 return response.json();
             })
             .then(result => {
-                dispatch({type:SET_ROOT_COMMENTS_SUCCESS, data: result.data})})
-            .catch(error => dispatch({type:SET_ROOT_COMMENTS_ERROR}));
+                dispatch({type: SET_ROOT_COMMENTS_SUCCESS, data: result.data})
+            })
+            .catch(error => dispatch({type: SET_ROOT_COMMENTS_ERROR}));
     }
 }
 
-export function getSecondaryComments(id: number, commentsData: any){
-    return function (dispatch: AppDispatch){
+export function getSecondaryComments(id: number, commentsData: any) {
+    return function (dispatch: AppDispatch) {
         fetch(`/api/comments/secondary?id=${id}`, {
             method: 'GET',
             headers: {
@@ -56,20 +58,23 @@ export function getSecondaryComments(id: number, commentsData: any){
                 return response.json();
             })
             .then(result => {
-                let newArr:any = [];
-                let index = commentsData.findIndex((elem:any)=>{return id === elem.id})
-                newArr = commentsData.slice(0,index).concat(result.data).concat(commentsData.slice(index+1,commentsData.length))
-                dispatch({type:GET_SECONDARY_COMMENTS_SUCCESS, data: newArr})
+                let newArr: any = [];
+                let index = commentsData.findIndex((elem: any) => {
+                    return id === elem.id
+                })
+                newArr = commentsData.slice(0, index).concat(result.data).concat(commentsData.slice(index + 1, commentsData.length))
+                dispatch({type: GET_SECONDARY_COMMENTS_SUCCESS, data: newArr})
             })
             .catch(error => {
-                dispatch({type:GET_SECONDARY_COMMENTS_ERROR})});
+                dispatch({type: GET_SECONDARY_COMMENTS_ERROR})
+            });
     }
 }
 
 
-export function getArticlesFromServer(baseURL: string){
-    return function (dispatch: AppDispatch){
-       fetch("/api/articles/all", {
+export function getArticlesFromServer(baseURL: string) {
+    return function (dispatch: AppDispatch) {
+        fetch("/api/articles/all", {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
@@ -80,22 +85,21 @@ export function getArticlesFromServer(baseURL: string){
                 return response.json();
             })
             .then(result => {
-                console.log(result)
-                dispatch({type:SET_ARTICLE_FETCH_SUCCESS, data: result.data})})
-            .catch(error => dispatch({type:SET_ARTICLE_FETCH_ERROR}));
+                dispatch({type: SET_ARTICLE_FETCH_SUCCESS, data: result.data})
+            })
+            .catch(error => dispatch({type: SET_ARTICLE_FETCH_ERROR}));
     }
 }
 
-export function getCurrentArticle(elem: any){
-    return function (dispatch: AppDispatch){
-       dispatch({type: SET_CURRENT_ARTICLE, data: elem})
+export function getCurrentArticle(elem: any) {
+    return function (dispatch: AppDispatch) {
+        dispatch({type: SET_CURRENT_ARTICLE, data: elem})
     }
 }
 
 
-
-export function getCurrentArticleFromServer(id: string){
-    return function (dispatch: AppDispatch){
+export function getCurrentArticleFromServer(id: string) {
+    return function (dispatch: AppDispatch) {
         fetch(`/api/articles/current?id=${id}`, {
             method: 'GET',
             headers: {
@@ -109,7 +113,7 @@ export function getCurrentArticleFromServer(id: string){
             .then(result => {
                 console.log(result)
                 dispatch({type: GET_CURRENT_ARTICLE_SUCCESS})
-                dispatch({type:SET_CURRENT_ARTICLE, data: result.data[0]})
+                dispatch({type: SET_CURRENT_ARTICLE, data: result.data[0]})
             })
             .catch(error => dispatch({type: GET_CURRENT_ARTICLE_ERROR}));
     }

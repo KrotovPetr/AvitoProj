@@ -160,13 +160,30 @@
   border-radius: 20px; /* закругления плашки */
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1800px) {
   .mainContainer {
     justify-content: center;
     align-items: center;
   }
   .mainContainer .contentContainer {
     height: 90vh;
+  }
+}
+@media (min-width: 1600px) and (max-width: 1800px) {
+  .mainContainer .contentContainer {
+    height: 85vh;
+  }
+  .mainContainer .contentContainer .repLink {
+    width: 80vw;
+  }
+  .mainContainer .contentContainer .article .articleContainer {
+    width: 80vw;
+  }
+  .mainContainer .contentContainer .article .commentsContainer .commentsTop {
+    width: 80vw;
+  }
+  .mainContainer .contentContainer .article .commentsContainer .commentsPool {
+    width: 80vw;
   }
 }
 @media (min-width: 1200px) and (max-width: 1600px) {

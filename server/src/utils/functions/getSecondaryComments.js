@@ -1,25 +1,55 @@
 const fetch = require("node-fetch");
-let ansArr = [];
-
-function getSecondaryCommentsFromDb(id){
-    ansArr = [];
-    let ans = getComments(Number.parseInt(id))
-    return ansArr;
-}
 
 
-async function getComments(id){
-    let result = await fetch(`http://localhost:3001/comments?id=${id}`).then(result=>result.json()).then(data=>{
-
-        return data}).catch(e=>console.log(e));
-    ansArr.push(result[0]);
-    (result[0].children.length>0) && result[0].children.forEach((elem)=>{
-        getComments(elem)
+function getSecondaryCommentsFromDb(id, resolve, acc) {
+    let result = acc || []
+    return new Promise((res, _) => {
+        fetch(`http://localhost:3001/comments?id=${id}`).then(result => result.json()).then(async data => {
+            result.push(data[0])
+            if (!data || data[0].children.length === 0) {
+                resolve(acc)
+            }
+            for (const elem of data[0].children) {
+                await getSecondaryCommentsFromDb(elem, res, result)
+            }
+        }).catch(e => _(e));
     })
-    return 0;
 }
 
-console.log(getSecondaryCommentsFromDb(1))
-console.log(ansArr);
 
-// module.exports = getSecondaryCommentsFromDb;
+// let ansArr = [];
+//
+// function getSecondaryCommentsFromDb(id) {
+//     ansArr = [];
+//
+//     return new Promise(async (resolve) => {
+//         await getComments(Number.parseInt(id))
+//         resolve(ansArr)
+//     })
+// }
+//
+//
+// async function getComments(id) {
+//     let result = await fetch(`http://localhost:3001/comments?id=${id}`).then(result => result.json()).then(data => {
+//         return data
+//     }).catch(e => console.log(e));
+//     console.log(result)
+//     ansArr.push(result[0]);
+//     (result[0].children.length > 0) && result[0].children.forEach(async (elem) => {
+//         await getComments(elem)
+//     })
+//     return 0;
+// }
+//
+// getSecondaryCommentsFromDb(1)
+//     .then((e) => {
+//         console.log(e, "res")
+//     })
+
+// getSecondaryComments(1)
+//     .then((e) => {
+//         // console.log("THIS IS RESULT!!!!!!!!")
+//         // console.log(e)
+//     })
+
+module.exports = getSecondaryCommentsFromDb;

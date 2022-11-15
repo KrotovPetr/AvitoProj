@@ -1,19 +1,25 @@
+const fetch = require("node-fetch");
 let ansArr = [];
 
-function getSecondaryComments(commentArr, id){
+function getSecondaryCommentsFromDb(id){
     ansArr = [];
-    let ans = getComments(Number.parseInt(id),commentArr)
+    let ans = getComments(Number.parseInt(id))
     return ansArr;
 }
 
 
-function getComments(id, commentsArr){
-    let ans = commentsArr.filter((elem)=>elem.id === id);
-    ansArr.push(ans[0]);
-    (ans[0].children.length>0) && ans[0].children.forEach((elem)=>{
-        getComments(elem, commentsArr)
+async function getComments(id){
+    let result = await fetch(`http://localhost:3001/comments?id=${id}`).then(result=>result.json()).then(data=>{
+
+        return data}).catch(e=>console.log(e));
+    ansArr.push(result[0]);
+    (result[0].children.length>0) && result[0].children.forEach((elem)=>{
+        getComments(elem)
     })
     return 0;
 }
 
-module.exports = getSecondaryComments;
+console.log(getSecondaryCommentsFromDb(1))
+console.log(ansArr);
+
+// module.exports = getSecondaryCommentsFromDb;

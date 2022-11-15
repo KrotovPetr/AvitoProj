@@ -4,28 +4,41 @@ import Article from "../../Components/Article/Article";
 import {useDispatch, useSelector} from "../../utils/Types/store";
 import {getArticlesFromServer} from "../../Services/actions/componentsActions";
 import { v4 as uuidv4 } from 'uuid';
+import {any} from "prop-types";
 const MainPage: FC = () => {
     const dispatch = useDispatch();
-    const [articles, setArticles] = useState<any>([])
+    const [flag, setUpdateFlag] = useState<any>(false)
     const {apiURL, articlesArray, articleFetchSuccess} = useSelector((store)=>({
         apiURL: store.component.apiURL,
         articlesArray: store.component.articlesArray,
         articleFetchSuccess: store.component.articleFetchSuccess
     }))
 
+    const timer: any = ()=>{
+        setTimeout(()=>{
+        setUpdateFlag(!flag);
+    },60000)}
+
     useEffect(()=>{
         if(articlesArray.length === 0){
             dispatch(getArticlesFromServer(apiURL));
-            setArticles(articlesArray)
         }
-        setArticles(articlesArray)
     }, [articlesArray])
 
+    useEffect(()=>{
+        dispatch(getArticlesFromServer(apiURL));
+        timer();
+    },[flag])
 
     return (
         <div className={mainPageStyles.mainContainer}>
             <button className={mainPageStyles.reloadButton} onClick={(e: React.MouseEvent<HTMLButtonElement>)=>{
                 e.preventDefault();
+                clearInterval(timer);
+                // timer= setInterval(()=>{
+                //     console.log("hooray!")
+                //     setUpdateFlag(!flag);
+                // },5000)
                 dispatch(getArticlesFromServer(apiURL))
             }}>Reload</button>
             <div className={mainPageStyles.articlesContainer}>

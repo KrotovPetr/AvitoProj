@@ -1,6 +1,5 @@
 const fetch = require("node-fetch");
 const getSecondaryComments = require("../utils/functions/getSecondaryComments");
-const commentsArr = require("../utils/constants/comments");
 const getRoots = require("../utils/functions/getRoots");
 const getSecondaryCommentsFromDb = require("../utils/functions/getSecondaryComments");
 

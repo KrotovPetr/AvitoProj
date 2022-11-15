@@ -3,15 +3,16 @@ import articleStyles from "./articleStyles.module.scss"
 import {useHistory} from "react-router-dom";
 import {useDispatch} from "../../utils/Types/store";
 import {getCurrentArticle} from "../../Services/actions/componentsActions";
+import {TArticle} from "../../utils/Types/types";
 
-
-const Article:FC<any> = (props) => {
+//Компонент, представляющий краткую информацию о статье на главной странице
+const Article: FC<TArticle> = (props) => {
     const history = useHistory();
     const dispatch = useDispatch();
     return (
-        <div className={articleStyles.articleContainer} onClick={(e: React.MouseEvent<HTMLDivElement>):void=>{
+        <div className={articleStyles.articleContainer} onClick={(e: React.MouseEvent<HTMLDivElement>): void => {
             dispatch(getCurrentArticle(props.elem))
-            history.replace("/articles/"+props.elem.id)
+            history.replace("/articles/" + props.elem.id)
         }}>
             <div className={articleStyles.articlePrimaryDescription}>
                 <h1 className={articleStyles.articleName}>{props.elem.title}</h1>

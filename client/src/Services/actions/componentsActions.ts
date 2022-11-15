@@ -1,9 +1,9 @@
 import {AppDispatch} from "../../utils/Types/store";
+import {TArticleElem, TElem} from "../../utils/Types/types";
 
 
 export const ADD_COMMENTS: 'ADD_COMMENTS' = 'ADD_COMMENTS';
 export const SET_ROOT_COMMENTS: 'SET_ROOT_COMMENTS' = 'SET_ROOT_COMMENTS';
-export const SET_ARTICLES_ARRAY: 'SET_ARTICLES_ARRAY' = 'SET_ARTICLES_ARRAY';
 export const SET_ARTICLE_FETCH_ACTIVE: 'SET_ARTICLE_FETCH_ACTIVE' = 'SET_ARTICLE_FETCH_ACTIVE';
 export const SET_ARTICLE_FETCH_SUCCESS: 'SET_ARTICLE_FETCH_SUCCESS' = 'SET_ARTICLE_FETCH_SUCCESS';
 export const SET_ARTICLE_FETCH_ERROR: 'SET_ARTICLE_FETCH_ERROR' = 'SET_ARTICLE_FETCH_ERROR';
@@ -41,11 +41,14 @@ export function saveRootComments() {
             .then(result => {
                 dispatch({type: SET_ROOT_COMMENTS_SUCCESS, data: result.data})
             })
-            .catch(error => dispatch({type: SET_ROOT_COMMENTS_ERROR}));
+            .catch(error => {
+                console.log(error)
+                dispatch({type: SET_ROOT_COMMENTS_ERROR})
+            });
     }
 }
 
-export function getSecondaryComments(id: number, commentsData: any) {
+export function getSecondaryComments(id: number, commentsData: TElem[]) {
     return function (dispatch: AppDispatch) {
         fetch(`/api/comments/secondary?id=${id}`, {
             method: 'GET',
@@ -58,21 +61,21 @@ export function getSecondaryComments(id: number, commentsData: any) {
                 return response.json();
             })
             .then(result => {
-                let newArr: any = [];
-                let index = commentsData.findIndex((elem: any) => {
+                let index = commentsData.findIndex((elem: TElem) => {
                     return id === elem.id
                 })
-                newArr = commentsData.slice(0, index).concat(result.data).concat(commentsData.slice(index + 1, commentsData.length))
+                let newArr: [] | TElem[] = commentsData.slice(0, index).concat(result.data).concat(commentsData.slice(index + 1, commentsData.length));
                 dispatch({type: GET_SECONDARY_COMMENTS_SUCCESS, data: newArr})
             })
             .catch(error => {
-                dispatch({type: GET_SECONDARY_COMMENTS_ERROR})
+                console.log(error)
+                dispatch({type: SET_ROOT_COMMENTS_ERROR})
             });
     }
 }
 
 
-export function getArticlesFromServer(baseURL: string) {
+export function getArticlesFromServer() {
     return function (dispatch: AppDispatch) {
         fetch("/api/articles/all", {
             method: 'GET',
@@ -87,11 +90,14 @@ export function getArticlesFromServer(baseURL: string) {
             .then(result => {
                 dispatch({type: SET_ARTICLE_FETCH_SUCCESS, data: result.data})
             })
-            .catch(error => dispatch({type: SET_ARTICLE_FETCH_ERROR}));
+            .catch(error => {
+                console.log(error)
+                dispatch({type: SET_ROOT_COMMENTS_ERROR})
+            });
     }
 }
 
-export function getCurrentArticle(elem: any) {
+export function getCurrentArticle(elem: TArticleElem) {
     return function (dispatch: AppDispatch) {
         dispatch({type: SET_CURRENT_ARTICLE, data: elem})
     }
@@ -115,6 +121,9 @@ export function getCurrentArticleFromServer(id: string) {
                 dispatch({type: GET_CURRENT_ARTICLE_SUCCESS})
                 dispatch({type: SET_CURRENT_ARTICLE, data: result.data[0]})
             })
-            .catch(error => dispatch({type: GET_CURRENT_ARTICLE_ERROR}));
+            .catch(error => {
+                console.log(error)
+                dispatch({type: SET_ROOT_COMMENTS_ERROR})
+            });
     }
 }

@@ -17,11 +17,12 @@ import {
     SET_ROOT_COMMENTS_ERROR,
     SET_ROOT_COMMENTS_SUCCESS
 } from "../actions/componentsActions";
+import {TArticleElem, TElem} from "../../utils/Types/types";
 
 export type TInitialState = {
-    commentsData: any,
-    rootComments: any,
-    articlesArray: any,
+    commentsData: TElem[] | [],
+    rootComments: TElem[] | [],
+    articlesArray: TArticleElem[] | [],
     apiURL: string,
     articleFetchActive: boolean,
     articleFetchSuccess: boolean,
@@ -33,7 +34,7 @@ export type TInitialState = {
     secondaryCommentFetchSuccess: boolean,
     secondaryCommentFetchError: boolean,
     updateDetector: boolean,
-    currentArticle: any
+    currentArticle: TArticleElem | null,
     currentArticleFetchActive: boolean,
     currentArticleFetchSuccess: boolean,
     currentArticleFetchError: boolean,

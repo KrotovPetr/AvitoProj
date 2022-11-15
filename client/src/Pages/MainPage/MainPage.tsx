@@ -4,17 +4,16 @@ import Article from "../../Components/Article/Article";
 import {useDispatch, useSelector} from "../../utils/Types/store";
 import {getArticlesFromServer} from "../../Services/actions/componentsActions";
 import {v4 as uuidv4} from 'uuid';
+import {TArticleElem} from "../../utils/Types/types";
 
 const MainPage: FC = () => {
     const dispatch = useDispatch();
-    const [flag, setUpdateFlag] = useState<any>(false)
-    const {apiURL, articlesArray, articleFetchSuccess} = useSelector((store) => ({
-        apiURL: store.component.apiURL,
+    const [flag, setUpdateFlag] = useState<boolean>(false)
+    const {articlesArray} = useSelector((store) => ({
         articlesArray: store.component.articlesArray,
-        articleFetchSuccess: store.component.articleFetchSuccess
     }))
 
-    const timer: any = () => {
+    const timer: () => void = (): void => {
         setTimeout(() => {
             setUpdateFlag(!flag);
         }, 5000)
@@ -22,12 +21,12 @@ const MainPage: FC = () => {
 
     useEffect(() => {
         if (articlesArray.length === 0) {
-            dispatch(getArticlesFromServer(apiURL));
+            dispatch(getArticlesFromServer());
         }
     }, [articlesArray])
 
     useEffect(() => {
-        dispatch(getArticlesFromServer(apiURL));
+        dispatch(getArticlesFromServer());
         timer();
     }, [flag])
 
@@ -35,16 +34,16 @@ const MainPage: FC = () => {
         <div className={mainPageStyles.mainContainer}>
             <button className={mainPageStyles.reloadButton} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault();
-                clearInterval(timer);
+                // clearInterval(timer);
                 // timer= setInterval(()=>{
                 //     console.log("hooray!")
                 //     setUpdateFlag(!flag);
                 // },5000)
-                dispatch(getArticlesFromServer(apiURL))
+                dispatch(getArticlesFromServer())
             }}>Reload
             </button>
             <div className={mainPageStyles.articlesContainer}>
-                {articlesArray.length > 0 ? articlesArray.map((elem: any) => {
+                {articlesArray.length > 0 ? articlesArray.map((elem: TArticleElem) => {
                     return <Article key={uuidv4()} elem={elem}/>
                 }) : <p className={mainPageStyles.warningInfo}>Пожалуйста, подождите, если данные грузятся долго,
                     обновите с помощью кнопки или перезагрузите её</p>}

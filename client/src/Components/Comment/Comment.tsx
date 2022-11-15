@@ -2,9 +2,10 @@ import React, {FC, useEffect, useState} from 'react';
 import commentStyles from "./commentStyles.module.scss"
 import {useDispatch, useSelector,} from "../../utils/Types/store";
 import {getSecondaryComments} from "../../Services/actions/componentsActions";
+import {TComment} from "../../utils/Types/types";
 
-const Comment: FC<any> = (props) => {
-    const [hasShown, setShows] = useState<any>(false);
+const Comment: FC<TComment> = (props) => {
+    const [hasShown, setShows] = useState<boolean>(false);
     const dispatch = useDispatch();
     const {commentsData, updateDetector} = useSelector((store) => ({
         commentsData: store.component.commentsData,

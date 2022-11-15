@@ -8,10 +8,11 @@ import {
     saveRootComments
 } from "../../Services/actions/componentsActions";
 import {useDispatch, useSelector} from "../../utils/Types/store";
+import {TElem} from "../../utils/Types/types";
 
-const ArticlePage: FC<any> = (props) => {
+const ArticlePage: FC = () => {
     const location = useLocation();
-    const [comments, setComments] = useState<any>([]);
+    const [comments, setComments] = useState<[] | TElem[]>([]);
     const history = useHistory();
     const dispatch = useDispatch();
     const {currentArticle, rootComments, commentsData} = useSelector((store) => ({
@@ -30,7 +31,7 @@ const ArticlePage: FC<any> = (props) => {
     useEffect(() => {
         if (currentArticle === null) {
             let id: string = location.pathname.split("/")[2];
-            
+
             dispatch(getCurrentArticleFromServer(id))
         }
     }, [currentArticle])
@@ -76,7 +77,7 @@ const ArticlePage: FC<any> = (props) => {
                             </div>
                             <div className={articlePageStyles.commentsPool}>
                                 {
-                                    comments.length > 0 && comments.map((elem: any) => {
+                                    comments.length > 0 && comments.map((elem: TElem) => {
                                         return <Comment key={elem.id} data={elem}/>
                                     })
                                 }

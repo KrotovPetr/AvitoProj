@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+<h1>Клиентская часть проекта</h1>
+<hr/>
+<h3>Технологии:</h3>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<ul>
+<li>React.js</li>
+<li>Redux</li>
+<li>Typescript</li>
+<li>SCSS</li>
+<li>Jest(Для тестирования)</li>
+</ul>
+<hr/>
+<h3>Общие сведения:</h3>
+<p>Проект запускается на порту 3000. Проект содержит две страницы, которые были в требованиях задания. На главной странице (MainPage) показаны 
+ТОП-100 свежих статей, полученных с сервера. Данные обновляются в автоматическом режиме раз в минуту, также имеется возможность обновить их
+вручную, нажав на кнопку Reload. Страница статьи (ArticlePage) содержит информацию о конкретной статье, на неё можно зайти, 
+кликнув по заинтересовавшей статье, либо возможность ввести адрес в строку с ручкой "/articles/:{id}", что запустит процесс
+загрузки статьи с сервера.
+</p>
+<hr/>
+<h3>Команды</h3>
+<p>Запуск клиентской части: <b>yarn run start (yarn start)</b></p>
+<p>Сборка клиентской части: <b>yarn run build (yarn build)</b></p>
+<hr/>
+<h3>Послесловие:</h3>
+Данный проект легко масштабировать в полноценный ресурс. Для этого можно добавить авторизацию для пользователей на
+основе JWT.
+После этого добавления, лучше всего исправить саму ленту новостей, добавить технологию WebSocket, что создаст единое
+соединение и возможность обновления в реальном времени. Т.к. в данном проекте не предусмотрена
+авторизация, а значит никто не может добавить новые статьи из пользователей, то данные 500 статей (полученных с сайта
+HackerNews) лежат в БД.
+При первом заходе данные вытаскиваются и попадают на обработку на сервер-приложений, где в базовой конфигурации
+возвращается 100 свежих новостей,
+а добавление новых происходит программно, приблизительно каждые 30 секунд. При большем сроке и свободе действий это
+можно было реализовать в данном проекте. 

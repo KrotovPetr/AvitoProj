@@ -1,3 +1,6 @@
+@import './src/utils/Styles/_colours.scss';
+
+
 .mainContainer {
   display: flex;
   flex-flow: column nowrap;
@@ -11,18 +14,17 @@
 .reloadButton {
   width: 150px;
   height: 50px;
-  background: #102226;
+  background: $black;
   align-self: flex-end;
   margin: 0 100px 0 0;
   display: flex;
-  color: #ffffff;
+  color: $white;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
-  font-family: 'Inter', sans-serif;
   border-radius: 20px;
 }
 
@@ -35,6 +37,8 @@
   width: 99%;
   height: 90vh;
   overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $black $grey;
 
   .spinWrapper {
     position: relative;
@@ -49,7 +53,6 @@
     .errorInfo {
       font-size: 16px;
       font-weight: bold;
-      font-family: 'Inter', sans-serif;
       text-align: center;
     }
 
@@ -57,7 +60,7 @@
       height: 60px;
       width: 60px;
       border: 3px solid transparent;
-      border-top-color: #102226;
+      border-top-color: $black;
       margin: 20px 0 0 0;
       border-radius: 50%;
       animation: spin 2s linear infinite;
@@ -70,7 +73,7 @@
       }
 
       &:before {
-        border-top-color: #102226;
+        border-top-color: $black;
         top: -12px;
         left: -12px;
         right: -12px;
@@ -79,7 +82,7 @@
       }
 
       &:after {
-        border-top-color: #102226;
+        border-top-color: $black;
         top: 6px;
         left: 6px;
         right: 6px;
@@ -96,11 +99,11 @@
 }
 
 .articlesContainer::-webkit-scrollbar-track {
-  background: #BFBFBF; /* цвет дорожки */
+  background: $scrollGrey; /* цвет дорожки */
 }
 
 .articlesContainer::-webkit-scrollbar-thumb {
-  background-color: #102226; /* цвет плашки */
+  background-color: $black; /* цвет плашки */
   border-radius: 20px; /* закругления плашки */
 }
 

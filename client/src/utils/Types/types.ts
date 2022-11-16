@@ -27,7 +27,8 @@ export type TElem = {
     content: string,
     id: number,
     parent: null | number,
-    time: string
+    time: string,
+    hasShown?: boolean
 }
 
 export type TArticleElem = {

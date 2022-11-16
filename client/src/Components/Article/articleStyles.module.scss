@@ -1,14 +1,13 @@
-$dark: #102226;
+@import './src/utils/Styles/_colours.scss';
 
-
-.articleContainer{
+.articleContainer {
   width: 1440px;
   min-height: 120px;
   height: fit-content;
   border-radius: 25px;
-  background: #ffffff;
-  box-shadow:  5px 5px 18px #c7c7c7,
-  -9px -9px 18px #f9f9f9;
+  background: $white;
+  box-shadow: 5px 5px 18px $shadow,
+  -9px -9px 18px $white;
   cursor: pointer;
   row-gap: 20px;
   display: flex;
@@ -17,130 +16,128 @@ $dark: #102226;
   align-items: flex-start;
 
 
-  .articleName{
-    font-size:18px;
-    color: $dark;
+  .articleName {
+    font-size: 18px;
+    color: $black;
     font-weight: bold;
-    font-family: 'Inter', sans-serif;
     padding: 20px 0 0 20px;
   }
 
-  .articlePrimaryDescription{
+  .articlePrimaryDescription {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    width:100%;
+    width: 100%;
 
-    .ratingContainer{
+    .ratingContainer {
       display: flex;
       flex-flow: row nowrap;
       justify-content: center;
       align-items: center;
       margin: 0 20px 0 0;
 
-      .star{
+      .star {
         font-size: 18px;
         content: '★';
-        color:gold;
+        color: $gold;
       }
-      .articleRating{
+
+      .articleRating {
         font-weight: bold;
         padding: 0 5px 0 0;
         font-size: 18px;
-        color: $dark;
-        font-family: 'Inter', sans-serif;
+        color: $black;
       }
     }
   }
 
-  .articleSecondaryDescription{
+  .articleSecondaryDescription {
     margin: 0 0 20px 20px;
-    font-size:14px;
-    font-family: 'Inter', sans-serif;
-    color: rgb(154, 154, 154);
+    font-size: 14px;
+    color: $grey;
 
   }
 
 }
 
-@media (min-width: 1000px) and (max-width: 1500px){
-  .articleContainer{
-    width:980px;
+@media (min-width: 1000px) and (max-width: 1500px) {
+  .articleContainer {
+    width: 980px;
   }
 }
 
-@media (min-width: 800px) and (max-width: 1100px){
+@media (min-width: 800px) and (max-width: 1100px) {
 
-  .articleContainer{
+  .articleContainer {
     width: 800px;
   }
 
 
 }
 
-@media (min-width: 650px) and (max-width: 800px){
+@media (min-width: 650px) and (max-width: 800px) {
 
-  .articleContainer{
+  .articleContainer {
     width: 600px;
   }
 
 }
 
-@media (min-width: 500px) and (max-width: 650px){
+@media (min-width: 500px) and (max-width: 650px) {
 
   .articleContainer {
     width: 480px;
   }
 
-  .articleContainer .articleName{
-    font-size:16px;
+  .articleContainer .articleName {
+    font-size: 16px;
   }
 
-  .star{
+  .star {
     font-size: 12px;
     content: '★';
-    color:gold;
+    color: gold;
   }
 
-  .articleContainer .articleSecondaryDescription{
+  .articleContainer .articleSecondaryDescription {
     margin: 0 0 10px 20px;
   }
 
 }
 
-@media (min-width: 350px) and (max-width: 500px){
+@media (min-width: 350px) and (max-width: 500px) {
 
   .articleContainer {
     width: 330px;
     min-height: fit-content;
   }
 
-  .articleContainer .articleName{
-    font-size:16px;
+  .articleContainer .articleName {
+    font-size: 16px;
     width: 260px;
   }
 
-  .articleContainer .articleSecondaryDescription{
+  .articleContainer .articleSecondaryDescription {
     margin: 0 0 10px 20px;
   }
 
 }
 
 
-@media (max-width: 350px){
+@media (max-width: 350px) {
 
   .articleContainer {
     width: 260px;
     min-height: fit-content;
   }
 
-  .articleContainer .articleName{
-    font-size:16px;
+  .articleContainer .articleName {
+    font-size: 16px;
     width: 260px;
   }
 
-  .articleContainer .articleSecondaryDescription{
+  .articleContainer .articleSecondaryDescription {
     margin: 0 0 10px 20px;
   }
 

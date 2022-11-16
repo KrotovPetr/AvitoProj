@@ -2,7 +2,7 @@ import React, {FC, useEffect, useState} from 'react';
 import articlePageStyles from "./articlePageStyles.module.scss"
 import {useHistory, useLocation} from "react-router-dom";
 import {
-    clearSecondaryComments,
+    clearAllComments,
     getCurrentArticleFromServer,
     saveRootComments
 } from "../../Services/actions/componentsActions";
@@ -22,13 +22,12 @@ const ArticlePage: FC = () => {
         rootComments: store.component.rootComments,
         commentsData: store.component.commentsData,
     }))
-    // console.log(currentArticle)
     useEffect(() => {
         if (commentsData && commentsData.length === 0) {
             dispatch(saveRootComments())
         }
         setComments(commentsData);
-    }, [rootComments, commentsData])
+    }, [commentsData])
 
     useEffect(() => {
         if (currentArticle === null) {
@@ -36,7 +35,7 @@ const ArticlePage: FC = () => {
 
             dispatch(getCurrentArticleFromServer(id))
         }
-    }, [currentArticle])
+    }, [currentArticle, rootComments])
 
     return (
         <div className={articlePageStyles.mainContainer}>
@@ -44,7 +43,7 @@ const ArticlePage: FC = () => {
                 <div className={articlePageStyles.navigationPanel}>
                     <p className={articlePageStyles.repLink} onClick={(e: React.MouseEvent<HTMLElement>): void => {
                         e.preventDefault();
-                        dispatch(clearSecondaryComments());
+                        dispatch(clearAllComments());
                         history.replace("/")
                     }}>
                         <span> &#8592;</span> Back
@@ -67,7 +66,14 @@ const ArticlePage: FC = () => {
                         {/*}*/}
                         <div className={articlePageStyles.articlePostContent}>
                             <p className={articlePageStyles.articleAuthor}>{currentArticle.by}</p>
-                            <p className={articlePageStyles.articleLink}> Original: {currentArticle.url}</p>
+                            {
+                                currentArticle.url.length !== 0 ?
+                                    <p className={articlePageStyles.articleLink}> Original: <a
+                                        href={currentArticle.url}
+                                        className={articlePageStyles.link}>{currentArticle.url}</a></p> :
+                                    <p className={articlePageStyles.articleLink}>Sorry, the author did not specify the
+                                        link</p>
+                            }
                         </div>
                         <div className={articlePageStyles.commentsContainer}>
                             <div className={articlePageStyles.commentsTop}>
@@ -75,7 +81,7 @@ const ArticlePage: FC = () => {
                                 <button className={articlePageStyles.reloadButton}
                                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                                             e.preventDefault();
-                                            dispatch(saveRootComments())
+                                            dispatch(clearAllComments());
                                         }}>Reload
                                 </button>
                             </div>

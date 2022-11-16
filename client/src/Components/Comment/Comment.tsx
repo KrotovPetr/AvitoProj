@@ -1,28 +1,28 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect} from 'react';
 import commentStyles from "./commentStyles.module.scss"
 import {useDispatch, useSelector,} from "../../utils/Types/store";
-import {getSecondaryComments} from "../../Services/actions/componentsActions";
 import {TComment} from "../../utils/Types/types";
+import {getSecondaryComments} from "../../Services/actions/componentsActions";
+import {getParentName} from "../../utils/Functions/getParentName";
 
+//компонент комментария на странице статьи
 const Comment: FC<TComment> = (props) => {
-    const [hasShown, setShows] = useState<boolean>(false);
     const dispatch = useDispatch();
-    const {commentsData, updateDetector} = useSelector((store) => ({
+    const {commentsData} = useSelector((store) => ({
         commentsData: store.component.commentsData,
-        updateDetector: store.component.updateDetector,
     }))
     useEffect(() => {
-        setShows(false);
-    }, [updateDetector])
+    }, [commentsData])
     return (
         <div className={commentStyles.commentContainer}>
-            <div className={commentStyles.commentHeader}>
-                <p className={commentStyles.commentAuthor}>{props.data.by}</p>
-                {props.data.children.length > 0 && !hasShown && props.data.parent === null &&
+            <div className={commentStyles.commentHeader}>{
+                props.data.parent === null ? <p className={commentStyles.commentAuthor}>{props.data.by}</p> :
+                    <p className={commentStyles.commentAuthor}>{props.data.by} &#8594; {props.data.parent && commentsData.length > 0 && getParentName(props.data.parent, commentsData)}</p>
+            }
+                {props.data.children.length > 0 && !props.data.hasShown && props.data.parent === null &&
                     <p className={commentStyles.commentChildren} onClick={(e: React.MouseEvent<HTMLElement>) => {
                         e.preventDefault();
                         dispatch(getSecondaryComments(props.data.id, commentsData))
-                        setShows(true);
                     }
                     }> Show full <span>&#8594;</span></p>}
             </div>

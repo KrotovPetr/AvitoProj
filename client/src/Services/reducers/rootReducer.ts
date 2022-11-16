@@ -190,6 +190,7 @@ export const componentReducer = (
         case CLEAR_SECONDARY_COMMENTS: {
             return {
                 ...state,
+                rootComments: [],
                 commentsData: [],
             }
         }

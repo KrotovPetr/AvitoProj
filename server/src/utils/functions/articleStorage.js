@@ -10,7 +10,7 @@ class ArticlesStorage {
             elem.descendants = 12;
             elem.time = now.getDate() + "/" + now.getMonth() + "/" + now.getFullYear() + "  " + checkTime(now.getHours()) + ":" + checkTime(now.getMinutes());
             if (!elem.url) {
-                elem.url = "The author did not specify the link, sorry";
+                elem.url = "";
             }
         })
         this.articles = arr;

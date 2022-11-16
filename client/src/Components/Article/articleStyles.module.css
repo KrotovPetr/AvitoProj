@@ -1,114 +1,17 @@
-@charset "UTF-8";
-.articleContainer {
-  width: 1440px;
-  min-height: 120px;
-  height: fit-content;
-  border-radius: 25px;
-  background: #ffffff;
-  box-shadow: 5px 5px 18px #c7c7c7, -9px -9px 18px #f9f9f9;
-  cursor: pointer;
-  row-gap: 20px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.articleContainer .articleName {
-  font-size: 18px;
-  color: #102226;
-  font-weight: bold;
-  font-family: "Inter", sans-serif;
-  padding: 20px 0 0 20px;
-}
-.articleContainer .articlePrimaryDescription {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.articleContainer .articlePrimaryDescription .ratingContainer {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  margin: 0 20px 0 0;
-}
-.articleContainer .articlePrimaryDescription .ratingContainer .star {
-  font-size: 18px;
-  content: "★";
-  color: gold;
-}
-.articleContainer .articlePrimaryDescription .ratingContainer .articleRating {
-  font-weight: bold;
-  padding: 0 5px 0 0;
-  font-size: 18px;
-  color: #102226;
-  font-family: "Inter", sans-serif;
-}
-.articleContainer .articleSecondaryDescription {
-  margin: 0 0 20px 20px;
-  font-size: 14px;
-  font-family: "Inter", sans-serif;
-  color: rgb(154, 154, 154);
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @import './src/utils/Styles/_colours.scss';
+ *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   articleStyles.module.scss 1:9  root stylesheet */
 
-@media (min-width: 1000px) and (max-width: 1500px) {
-  .articleContainer {
-    width: 980px;
-  }
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import './src/utils/Styles/_colours.scss';\d\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   articleStyles.module.scss 1:9  root stylesheet";
 }
-@media (min-width: 800px) and (max-width: 1100px) {
-  .articleContainer {
-    width: 800px;
-  }
-}
-@media (min-width: 650px) and (max-width: 800px) {
-  .articleContainer {
-    width: 600px;
-  }
-}
-@media (min-width: 500px) and (max-width: 650px) {
-  .articleContainer {
-    width: 480px;
-  }
-  .articleContainer .articleName {
-    font-size: 16px;
-  }
-  .star {
-    font-size: 12px;
-    content: "★";
-    color: gold;
-  }
-  .articleContainer .articleSecondaryDescription {
-    margin: 0 0 10px 20px;
-  }
-}
-@media (min-width: 350px) and (max-width: 500px) {
-  .articleContainer {
-    width: 330px;
-    min-height: fit-content;
-  }
-  .articleContainer .articleName {
-    font-size: 16px;
-    width: 260px;
-  }
-  .articleContainer .articleSecondaryDescription {
-    margin: 0 0 10px 20px;
-  }
-}
-@media (max-width: 350px) {
-  .articleContainer {
-    width: 260px;
-    min-height: fit-content;
-  }
-  .articleContainer .articleName {
-    font-size: 16px;
-    width: 260px;
-  }
-  .articleContainer .articleSecondaryDescription {
-    margin: 0 0 10px 20px;
-  }
-}
-
-/*# sourceMappingURL=articleStyles.module.css.map */

@@ -1,3 +1,5 @@
+@import './src/utils/Styles/_colours.scss';
+
 .commentContainer {
   box-sizing: border-box;
   display: flex;
@@ -6,9 +8,9 @@
   align-items: flex-start;
   width: 1600px;
   min-height: 60px;
-  background: #ffffff;
-  box-shadow: 9px 9px 18px #c7c7c7,
-  -9px -9px 18px #f9f9f9;
+  background: $white;
+  box-shadow: 5px 5px 18px $shadow,
+  -9px -9px 18px $whiteBoxes;
   border-radius: 10px;
 
   .commentHeader {
@@ -20,15 +22,14 @@
 
     .commentAuthor {
       margin: 10px 0 0 10px;
+      width: fit-content;
       font-weight: bold;
-      font-family: 'Inter', sans-serif;
       font-size: 14px;
     }
 
     .commentChildren {
       margin: 10px 10px 0 0;
       font-weight: bold;
-      font-family: 'Inter', sans-serif;
       font-size: 14px;
       cursor: pointer;
     }
@@ -37,9 +38,8 @@
 
   .commentContent {
     margin: 10px 0 0 10px;
-    font-family: 'Inter', sans-serif;
     font-size: 14px;
-    color: rgb(154, 154, 154);
+    color: $grey;
     width: 98%;
   }
 
@@ -47,9 +47,8 @@
     align-self: flex-end;
     justify-self: flex-end;
     margin: 20px 10px 10px 0;
-    font-family: 'Inter', sans-serif;
     font-size: 14px;
-    color: #102226;
+    color: $black;
   }
 
 }

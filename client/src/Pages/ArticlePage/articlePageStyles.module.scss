@@ -1,3 +1,5 @@
+@import './src/utils/Styles/_colours.scss';
+
 .mainContainer {
   width: 99%;
   height: fit-content;
@@ -19,9 +21,8 @@
       width: 1600px;
       cursor: pointer;
       font-size: 18px;
-      color: #102226;
+      color: $black;
       font-weight: bold;
-      font-family: 'Inter', sans-serif;
     }
 
     .repLink span {
@@ -36,10 +37,11 @@
       overflow: auto;
       width: 100%;
       margin: 40px 0 0 0;
-      //background: #9a9a9a;
       display: flex;
       justify-content: center;
       align-items: flex-start;
+      scrollbar-width: thin;
+      scrollbar-color: $black $grey;
 
       .articleContainer {
         width: 1600px;
@@ -47,16 +49,14 @@
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
-        //align-self: center;
         align-items: flex-start;
         padding: 0 40px 0 40px;
         row-gap: 40px;
 
         .articleName {
           font-size: 24px;
-          color: #102226;
+          color: $black;
           font-weight: bold;
-          font-family: 'Inter', sans-serif;
         }
 
         .articleDescription {
@@ -78,9 +78,8 @@
 
           .articleDate, .articleCommentsAmount > p {
             font-size: 14px;
-            color: rgb(154, 154, 154);
+            color: $grey;
             font-weight: bold;
-            font-family: 'Inter', sans-serif;
           }
 
           .articleCommentsAmount > .articlesLogo {
@@ -95,8 +94,7 @@
 
       .articleContent {
         font-size: 16px;
-        font-family: 'Inter', sans-serif;
-        color: #102226;
+        color: $black;
       }
 
       .articlePostContent {
@@ -107,12 +105,21 @@
 
         .articleAuthor, .articleLink {
           font-size: 14px;
-          font-family: 'Inter', sans-serif;
-          color: rgb(154, 154, 154);
+          color: $grey;
         }
 
         .articleLink {
           cursor: pointer;
+          color: $grey;
+
+          .link {
+            text-decoration: none;
+            color: $grey;
+          }
+
+          .link:visited {
+            color: $grey;
+          }
         }
       }
 
@@ -134,8 +141,7 @@
           .commentsHeader {
             font-size: 24px;
             font-weight: bold;
-            font-family: 'Inter', sans-serif;
-            color: #102226;
+            color: $black;
           }
 
           .reloadButton {
@@ -146,10 +152,9 @@
             align-items: center;
             width: 150px;
             height: 50px;
-            background: #102226;
-            color: #ffffff;
+            background: $black;
+            color: $white;
             font-weight: bold;
-            font-family: 'Inter', sans-serif;
             font-size: 16px;
             border-radius: 20px;
             cursor: pointer;
@@ -170,8 +175,7 @@
             font-size: 16px;
             font-weight: bold;
             margin: 20px 0 0 0;
-            color: rgb(154, 154, 154);
-            font-family: 'Inter', sans-serif;
+            color: $grey;
             text-align: center;
           }
         }
@@ -186,11 +190,11 @@
 }
 
 .article::-webkit-scrollbar-track {
-  background: #BFBFBF; /* цвет дорожки */
+  background: $scrollGrey; /* цвет дорожки */
 }
 
 .article::-webkit-scrollbar-thumb {
-  background-color: #102226; /* цвет плашки */
+  background-color: $black; /* цвет плашки */
   border-radius: 20px; /* закругления плашки */
 }
 
@@ -456,14 +460,14 @@
               font-size: 18px;
               font-weight: bold;
               font-family: 'Inter', sans-serif;
-              color: #102226;
+              color: $black;
             }
 
             .reloadButton {
               width: 100px;
               height: 40px;
-              background: #102226;
-              color: #ffffff;
+              background: $black;
+              color: $white;
               font-size: 14px;
               border-radius: 20px;
               cursor: pointer;

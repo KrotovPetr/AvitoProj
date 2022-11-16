@@ -17,7 +17,7 @@ export const GET_CURRENT_ARTICLE_ACTIVE: 'GET_CURRENT_ARTICLE_ACTIVE' = 'GET_CUR
 export const CLEAR_SECONDARY_COMMENTS: 'CLEAR_SECONDARY_COMMENTS' = 'CLEAR_SECONDARY_COMMENTS';
 
 
-export function clearSecondaryComments() {
+export function clearAllComments() {
     return function (dispatch: AppDispatch) {
         dispatch({type: CLEAR_SECONDARY_COMMENTS});
     }
@@ -36,6 +36,11 @@ export function saveRootComments() {
                 return response.json();
             })
             .then(result => {
+
+                let arr = result.data;
+                arr.forEach((elem: TElem) => {
+                    elem.hasShown = false;
+                })
                 dispatch({type: SET_ROOT_COMMENTS_SUCCESS, data: result.data})
             })
             .catch(error => {
@@ -61,6 +66,10 @@ export function getSecondaryComments(id: number, commentsData: TElem[]) {
                 let index = commentsData.findIndex((elem: TElem) => {
                     return id === elem.id
                 })
+                result.data.forEach((elem: TElem, current: number) => {
+                    elem["hasShown"] = true;
+                })
+
                 let newArr: [] | TElem[] = commentsData.slice(0, index).concat(result.data).concat(commentsData.slice(index + 1, commentsData.length));
                 dispatch({type: GET_SECONDARY_COMMENTS_SUCCESS, data: newArr})
             })
@@ -114,7 +123,6 @@ export function getCurrentArticleFromServer(id: string) {
                 return response.json();
             })
             .then(result => {
-                console.log(result)
                 dispatch({type: GET_CURRENT_ARTICLE_SUCCESS})
                 dispatch({type: SET_CURRENT_ARTICLE, data: result.data[0]})
             })

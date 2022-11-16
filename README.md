@@ -1,6 +1,6 @@
 <h1>HackerNews 2.0</h1>
 <p>Проект на стажировку в Авито на позицию стажер-фронтенд разработчик</p>
-
+<hr/>
 <h3>Технологии:</h3>
 <h5>Клиентская часть:</h5>
 <div id="technologyStack">
@@ -10,7 +10,9 @@
 <img src="https://img.shields.io/badge/SCSS-grey?logo=SASS&logoColor=white&style=for-the-badge" alt="SCSS Badge"/>
 <img src="https://img.shields.io/badge/React-blue?logo=React&logoColor=white&style=for-the-badge" alt="React Badge"/>
 <img src="https://img.shields.io/badge/Redux-blueviolet?logo=Redux&logoColor=white&style=for-the-badge" alt="Redux Badge"/>
+<img src="https://img.shields.io/badge/Jest-blue?logo=Jest&logoColor=white&style=for-the-badge" alt="Jest Badge"/>
 </div>
+
 <h5>Серверная часть:</h5>
 <div id="technologyStack">
 <img src="https://img.shields.io/badge/JavaScript-yellow?logo=JavaScript&logoColor=white&style=for-the-badge" alt="JavaScript Badge"/>
@@ -21,17 +23,33 @@
 <div id="technologyStack">
 <img src="https://img.shields.io/badge/JSONServer-red?logo=JavaScript&logoColor=white&style=for-the-badge" alt="JavaScript Badge"/>
 </div>
+<hr/>
 <h3>Общие сведения:</h3>
 <p>Проект построен по логике трёхзвенной архитектуры: клиентская часть, сервер приложений, база-данных(здесь json-server - имитация хранилища)</p>
+<hr/>
+<h3>Инструкция по запуску:</h3>
+<p>
+Приложение использует следующие порты:
+</p>
+<p>Клиентская часть: 3000 порт</p>
+<p>База данных: 3001 порт</p>
+<p>Серверная часть: 5000 порт</p>
+<h5>Вариант 1:</h5>
+<ol>
+<li>Клонировать проект с GitHub</li>
+<li>Установить все необходимые зависимости</li>
+<li>В общем package.json нажать на выполнение команды <b>yarn go</b> (Команда <b>yarn start</b>
+оставлена для запуска клиентской части)</li>
+<li>Также можно запустить проект из консоли, введя команду <b>yarn go</b></li>
+</ol>
+<h5>Вариант 2:</h5>
+<ol>
+<li>Клонировать проект с GitHub</li>
+<li>Установить все необходимые зависимости</li>
+<li>Пройтись по каждой папке проекта с каждой частью, прочитать описания в README.md, выполнить команды запуска (Предпочтительна цепочка БД->Сервер->Клиент)</li>
+</ol>
 
-<h3>Команды запуска:</h3>
-<ul>
- <li><b>yarn run go (yarn go)</b> - команда запуска всех составляющих проекта</li>
-</ul>
-
-<h3>Общая полезная информация</h3>
-<p>Существует возможность запустить каждый компонент отдельно, для этого в каждой папке существует свой package.json, в котором имеются свои команды. Для удобства понимания, в каждой папке есть свой README.md файл, в котором описана вся необходимая информация</p>
-
+<hr/>
 
 <h3>Послесловие от автора:</h3>
 <p>Т.к. часто в присланном ТЗ были расплывчатые формулировки, а Тех. Поддержка, конкретных ограничений не ставила, то были приняты следующие решения.</p>

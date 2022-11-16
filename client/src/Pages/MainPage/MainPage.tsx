@@ -16,7 +16,7 @@ const MainPage: FC = () => {
     const timer: () => void = (): void => {
         setTimeout(() => {
             setUpdateFlag(!flag);
-        }, 5000)
+        }, 60000)
     }
 
     useEffect(() => {
@@ -34,11 +34,6 @@ const MainPage: FC = () => {
         <div className={mainPageStyles.mainContainer}>
             <button className={mainPageStyles.reloadButton} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault();
-                // clearInterval(timer);
-                // timer= setInterval(()=>{
-                //     console.log("hooray!")
-                //     setUpdateFlag(!flag);
-                // },5000)
                 dispatch(getArticlesFromServer())
             }}>Reload
             </button>

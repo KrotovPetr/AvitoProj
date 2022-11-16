@@ -60,16 +60,13 @@ const ArticlePage: FC = () => {
                                      src={logo}/>
                             </div>
                         </div>
-                        {/*{currentArticle.text ?*/}
-                        {/*    <div className={articlePageStyles.articleContent}>{currentArticle.text}</div> :*/}
-                        {/*    null*/}
-                        {/*}*/}
                         <div className={articlePageStyles.articlePostContent}>
                             <p className={articlePageStyles.articleAuthor}>{currentArticle.by}</p>
                             {
                                 currentArticle.url.length !== 0 ?
                                     <p className={articlePageStyles.articleLink}> Original: <a
                                         href={currentArticle.url}
+                                        target="_blank"
                                         className={articlePageStyles.link}>{currentArticle.url}</a></p> :
                                     <p className={articlePageStyles.articleLink}>Sorry, the author did not specify the
                                         link</p>

@@ -43,10 +43,16 @@ const MainPage: FC = () => {
             }}>Reload
             </button>
             <div className={mainPageStyles.articlesContainer}>
-                {articlesArray.length > 0 ? articlesArray.map((elem: TArticleElem) => {
-                    return <Article key={uuidv4()} elem={elem}/>
-                }) : <p className={mainPageStyles.warningInfo}>Пожалуйста, подождите, если данные грузятся долго,
-                    обновите с помощью кнопки или перезагрузите её</p>}
+
+                {// @ts-ignore:
+                    articlesArray.length > 0 ? articlesArray.map((elem: TArticleElem) => {
+                        return <Article key={uuidv4()} elem={elem}/>
+                    }) : <div className={mainPageStyles.spinWrapper}>
+                        <p className={mainPageStyles.errorInfo}>Статьи подгружаются</p>
+                        <p className={mainPageStyles.errorInfo}>Если загрузка идёт долго, обновите страницу</p>
+
+                        <div className={mainPageStyles.spinner}></div>
+                    </div>}
             </div>
         </div>
     );

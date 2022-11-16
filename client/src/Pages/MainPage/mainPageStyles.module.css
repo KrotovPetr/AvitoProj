@@ -37,6 +37,53 @@
   height: 90vh;
   overflow: auto;
 }
+.articlesContainer .spinWrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+}
+.articlesContainer .spinWrapper .errorInfo {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+.articlesContainer .spinWrapper .spinner {
+  height: 60px;
+  width: 60px;
+  border: 3px solid transparent;
+  border-top-color: #102226;
+  margin: 20px 0 0 0;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+.articlesContainer .spinWrapper .spinner:before, .articlesContainer .spinWrapper .spinner:after {
+  content: "";
+  position: absolute;
+  border: 3px solid transparent;
+  border-radius: 50%;
+}
+.articlesContainer .spinWrapper .spinner:before {
+  border-top-color: #102226;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  animation: spin 3s linear infinite;
+}
+.articlesContainer .spinWrapper .spinner:after {
+  border-top-color: #102226;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  animation: spin 4s linear infinite;
+}
 
 .articlesContainer::-webkit-scrollbar {
   width: 6px; /* ширина scrollbar */
@@ -51,6 +98,14 @@
   border-radius: 20px; /* закругления плашки */
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @media (min-width: 2000px) {
   .reloadButton {
     margin: 20px 85px 20px 0;
@@ -86,6 +141,9 @@
   }
   .reloadButton {
     margin: 20px 20px 0 0;
+  }
+  .articlesContainer .spinWrapper .errorInfo {
+    font-size: 14px;
   }
 }
 

@@ -73,7 +73,7 @@
             flex-flow: row nowrap;
             justify-content: center;
             align-items: center;
-            column-gap: 10px;
+            column-gap: 3px;
           }
 
           .articleDate, .articleCommentsAmount > p {
@@ -84,9 +84,8 @@
           }
 
           .articleCommentsAmount > .articlesLogo {
-            width: 18px;
-            height: 18px;
-            background: #9a9a9a;
+            width: 16px;
+            height: 16px;
           }
 
 
@@ -166,6 +165,15 @@
           justify-content: center;
           align-items: center;
           row-gap: 20px;
+
+          .errorInfo {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0 0 0;
+            color: rgb(154, 154, 154);
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+          }
         }
       }
     }
@@ -339,6 +347,7 @@
 
           .commentsPool {
             width: 80vw;
+
           }
         }
       }
@@ -368,6 +377,10 @@
 
           .commentsPool {
             width: 80vw;
+
+            .errorInfo {
+              font-size: 14px;
+            }
           }
         }
       }
@@ -397,6 +410,10 @@
 
           .commentsPool {
             width: 75vw;
+
+            .errorInfo {
+              font-size: 14px;
+            }
           }
         }
       }
@@ -455,6 +472,10 @@
 
           .commentsPool {
             width: 65vw;
+
+            .errorInfo {
+              font-size: 14px;
+            }
           }
         }
       }

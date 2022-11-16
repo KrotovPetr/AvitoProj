@@ -1,6 +1,5 @@
 import {combineReducers} from "@reduxjs/toolkit";
 import {
-    ADD_COMMENTS,
     CLEAR_SECONDARY_COMMENTS,
     GET_CURRENT_ARTICLE_ACTIVE,
     GET_CURRENT_ARTICLE_ERROR,
@@ -12,12 +11,12 @@ import {
     SET_ARTICLE_FETCH_ERROR,
     SET_ARTICLE_FETCH_SUCCESS,
     SET_CURRENT_ARTICLE,
-    SET_ROOT_COMMENTS,
     SET_ROOT_COMMENTS_ACTIVE,
     SET_ROOT_COMMENTS_ERROR,
-    SET_ROOT_COMMENTS_SUCCESS
+    SET_ROOT_COMMENTS_SUCCESS,
 } from "../actions/componentsActions";
 import {TArticleElem, TElem} from "../../utils/Types/types";
+import {TActions} from "../../utils/Types/actionType";
 
 export type TInitialState = {
     commentsData: TElem[] | [],
@@ -63,24 +62,9 @@ const initialState: TInitialState = {
 
 export const componentReducer = (
     state: TInitialState = initialState,
-    action: any
+    action: TActions
 ): TInitialState => {
     switch (action.type) {
-        case ADD_COMMENTS: {
-            return {
-                ...state,
-                commentsData: action.data
-            }
-        }
-
-        case SET_ROOT_COMMENTS: {
-            return {
-                ...state,
-                commentsData: action.data,
-                rootComments: action.data
-            }
-        }
-
         case SET_ARTICLE_FETCH_SUCCESS: {
             return {
                 ...state,
@@ -105,7 +89,7 @@ export const componentReducer = (
                 ...state,
                 articleFetchActive: true,
                 articleFetchSuccess: false,
-                articleFetchError: true,
+                articleFetchError: false,
             }
         }
 

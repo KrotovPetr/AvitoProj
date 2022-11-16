@@ -1,7 +1,6 @@
 import React, {FC, useEffect, useState} from 'react';
 import articlePageStyles from "./articlePageStyles.module.scss"
 import {useHistory, useLocation} from "react-router-dom";
-import Comment from "../../Components/Comment/Comment";
 import {
     clearSecondaryComments,
     getCurrentArticleFromServer,
@@ -9,6 +8,9 @@ import {
 } from "../../Services/actions/componentsActions";
 import {useDispatch, useSelector} from "../../utils/Types/store";
 import {TElem} from "../../utils/Types/types";
+import Comment from "../../Components/Comment/Comment";
+import {v4 as uuidv4} from 'uuid';
+import logo from '../../utils/Pictures/bubble-chat.png';
 
 const ArticlePage: FC = () => {
     const location = useLocation();
@@ -35,6 +37,7 @@ const ArticlePage: FC = () => {
             dispatch(getCurrentArticleFromServer(id))
         }
     }, [currentArticle])
+
     return (
         <div className={articlePageStyles.mainContainer}>
             {currentArticle && <div className={articlePageStyles.contentContainer}>
@@ -54,7 +57,8 @@ const ArticlePage: FC = () => {
                             <p className={articlePageStyles.articleDate}>{currentArticle.time}</p>
                             <div className={articlePageStyles.articleCommentsAmount}>
                                 <p>{currentArticle.descendants}</p>
-                                <div className={articlePageStyles.articlesLogo}></div>
+                                <img className={articlePageStyles.articlesLogo}
+                                     src={logo}/>
                             </div>
                         </div>
                         {/*{currentArticle.text ?*/}
@@ -77,9 +81,11 @@ const ArticlePage: FC = () => {
                             </div>
                             <div className={articlePageStyles.commentsPool}>
                                 {
-                                    comments.length > 0 && comments.map((elem: TElem) => {
-                                        return <Comment key={elem.id} data={elem}/>
-                                    })
+                                    //@ts-ignore:
+                                    comments.length > 0 ? comments.map((elem: TElem) => {
+                                            return <Comment data={elem} key={uuidv4()}/>
+                                        }) :
+                                        <p className={articlePageStyles.errorInfo}>Комментариев пока нет</p>
                                 }
 
                             </div>

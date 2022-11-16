@@ -1,4 +1,4 @@
-.mainContainer{
+.mainContainer {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -8,101 +8,171 @@
   row-gap: 40px;
 }
 
-.reloadButton{
-  width:150px;
-  height:50px;
+.reloadButton {
+  width: 150px;
+  height: 50px;
   background: #102226;
   align-self: flex-end;
   margin: 0 100px 0 0;
   display: flex;
-  color:#ffffff;
+  color: #ffffff;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  cursor:pointer;
-  font-size:14px;
-  font-weight: bold ;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
   font-family: 'Inter', sans-serif;
   border-radius: 20px;
 }
 
-.articlesContainer{
+.articlesContainer {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
   row-gap: 20px;
   width: 99%;
-  //background: blue;
   height: 90vh;
   overflow: auto;
+
+  .spinWrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+
+    .errorInfo {
+      font-size: 16px;
+      font-weight: bold;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+    }
+
+    .spinner {;
+      height: 60px;
+      width: 60px;
+      border: 3px solid transparent;
+      border-top-color: #102226;
+      margin: 20px 0 0 0;
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        border: 3px solid transparent;
+        border-radius: 50%;
+      }
+
+      &:before {
+        border-top-color: #102226;
+        top: -12px;
+        left: -12px;
+        right: -12px;
+        bottom: -12px;
+        animation: spin 3s linear infinite;
+      }
+
+      &:after {
+        border-top-color: #102226;
+        top: 6px;
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+        animation: spin 4s linear infinite;
+      }
+    }
+  }
 }
 
 
 .articlesContainer::-webkit-scrollbar {
-  width: 6px;               /* ширина scrollbar */
-}
-.articlesContainer::-webkit-scrollbar-track {
-  background: #BFBFBF;        /* цвет дорожки */
-}
-.articlesContainer::-webkit-scrollbar-thumb {
-  background-color: #102226;    /* цвет плашки */
-  border-radius: 20px;       /* закругления плашки */
+  width: 6px; /* ширина scrollbar */
 }
 
+.articlesContainer::-webkit-scrollbar-track {
+  background: #BFBFBF; /* цвет дорожки */
+}
+
+.articlesContainer::-webkit-scrollbar-thumb {
+  background-color: #102226; /* цвет плашки */
+  border-radius: 20px; /* закругления плашки */
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @media (min-width: 2000px) {
-  .reloadButton{
-    margin:20px 85px 20px 0;
+  .reloadButton {
+    margin: 20px 85px 20px 0;
   }
 
 
 }
 
-@media (min-width: 1100px) and (max-width: 1600px){
-  .mainContainer{
+@media (min-width: 1100px) and (max-width: 1600px) {
+  .mainContainer {
     height: 85vh;
   }
-  .reloadButton{
-    margin:20px 50px 20px 0;
+  .reloadButton {
+    margin: 20px 50px 20px 0;
   }
 
 }
 
-@media (min-width: 800px) and (max-width: 1100px){
-  .mainContainer{
+@media (min-width: 800px) and (max-width: 1100px) {
+  .mainContainer {
     height: 85vh;
   }
 
-  .reloadButton{
-    margin:20px 50px 20px 0;
-  }
-
-
-}
-
-
-@media (min-width: 500px) and (max-width: 800px){
-  .mainContainer{
-    height: 85vh;
-  }
-
-  .reloadButton{
-    margin:20px 50px 0 0;
+  .reloadButton {
+    margin: 20px 50px 20px 0;
   }
 
 
 }
 
-@media (min-width: 300px) and (max-width: 500px){
-  .mainContainer{
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .mainContainer {
     height: 85vh;
   }
 
-  .reloadButton{
-    margin:20px 20px 0 0;
+  .reloadButton {
+    margin: 20px 50px 0 0;
   }
 
+
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+  .mainContainer {
+    height: 85vh;
+  }
+
+  .reloadButton {
+    margin: 20px 20px 0 0;
+  }
+
+  .articlesContainer {
+    .spinWrapper {
+      .errorInfo {
+        font-size: 14px;
+      }
+    }
+  }
 
 }
 

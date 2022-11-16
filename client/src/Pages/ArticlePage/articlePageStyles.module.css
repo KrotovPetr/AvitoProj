@@ -68,7 +68,7 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 3px;
 }
 .mainContainer .contentContainer .article .articleContainer .articleDescription .articleDate, .mainContainer .contentContainer .article .articleContainer .articleDescription .articleCommentsAmount > p {
   font-size: 14px;
@@ -77,9 +77,8 @@
   font-family: "Inter", sans-serif;
 }
 .mainContainer .contentContainer .article .articleContainer .articleDescription .articleCommentsAmount > .articlesLogo {
-  width: 18px;
-  height: 18px;
-  background: #9a9a9a;
+  width: 16px;
+  height: 16px;
 }
 .mainContainer .contentContainer .article .articleContent {
   font-size: 16px;
@@ -145,6 +144,14 @@
   justify-content: center;
   align-items: center;
   row-gap: 20px;
+}
+.mainContainer .contentContainer .article .commentsContainer .commentsPool .errorInfo {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px 0 0 0;
+  color: rgb(154, 154, 154);
+  font-family: "Inter", sans-serif;
+  text-align: center;
 }
 
 .article::-webkit-scrollbar {
@@ -270,6 +277,9 @@
   .mainContainer .contentContainer .article .commentsContainer .commentsPool {
     width: 80vw;
   }
+  .mainContainer .contentContainer .article .commentsContainer .commentsPool .errorInfo {
+    font-size: 14px;
+  }
 }
 @media (min-width: 350px) and (max-width: 500px) {
   .mainContainer .contentContainer {
@@ -286,6 +296,9 @@
   }
   .mainContainer .contentContainer .article .commentsContainer .commentsPool {
     width: 75vw;
+  }
+  .mainContainer .contentContainer .article .commentsContainer .commentsPool .errorInfo {
+    font-size: 14px;
   }
 }
 @media (min-width: 200px) and (max-width: 350px) {
@@ -328,6 +341,9 @@
   }
   .mainContainer .contentContainer .article .commentsContainer .commentsPool {
     width: 65vw;
+  }
+  .mainContainer .contentContainer .article .commentsContainer .commentsPool .errorInfo {
+    font-size: 14px;
   }
 }
 

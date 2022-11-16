@@ -1,9 +1,6 @@
 import {AppDispatch} from "../../utils/Types/store";
 import {TArticleElem, TElem} from "../../utils/Types/types";
 
-
-export const ADD_COMMENTS: 'ADD_COMMENTS' = 'ADD_COMMENTS';
-export const SET_ROOT_COMMENTS: 'SET_ROOT_COMMENTS' = 'SET_ROOT_COMMENTS';
 export const SET_ARTICLE_FETCH_ACTIVE: 'SET_ARTICLE_FETCH_ACTIVE' = 'SET_ARTICLE_FETCH_ACTIVE';
 export const SET_ARTICLE_FETCH_SUCCESS: 'SET_ARTICLE_FETCH_SUCCESS' = 'SET_ARTICLE_FETCH_SUCCESS';
 export const SET_ARTICLE_FETCH_ERROR: 'SET_ARTICLE_FETCH_ERROR' = 'SET_ARTICLE_FETCH_ERROR';

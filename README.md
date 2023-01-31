@@ -3,9 +3,6 @@
 <h3>(Docker, Тестирование, Новая и обдуманная база данных, WebSocket)</h3>
 
 <hr>
-<h3>Новый макет для реализации</h3>
-<a href="https://www.figma.com/file/tFeByAyB3KByPPdMVkCo2i/Untitled?node-id=0%3A1&t=CUex1ijXpiyKj4cR-1">Figma</a>
-<hr/>
 
 
 
